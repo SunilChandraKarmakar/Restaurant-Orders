@@ -1,0 +1,343 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\Restaurant-Orders\\RestaurantOrdersApplicationService\\RestaurantOrdersApplicationService.Api\\RestaurantOrdersApplicationService.Api.csproj": {}
+  },
+  "projects": {
+    "D:\\Restaurant-Orders\\RestaurantOrdersApplicationService\\RestaurantOrdersApplicationService.Api\\RestaurantOrdersApplicationService.Api.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Restaurant-Orders\\RestaurantOrdersApplicationService\\RestaurantOrdersApplicationService.Api\\RestaurantOrdersApplicationService.Api.csproj",
+        "projectName": "RestaurantOrdersApplicationService.Api",
+        "projectPath": "D:\\Restaurant-Orders\\RestaurantOrdersApplicationService\\RestaurantOrdersApplicationService.Api\\RestaurantOrdersApplicationService.Api.csproj",
+        "packagesPath": "C:\\Users\\Sunil\\.nuget\\packages\\",
+        "outputPath": "D:\\Restaurant-Orders\\RestaurantOrdersApplicationService\\RestaurantOrdersApplicationService.Api\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Sunil\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\Restaurant-Orders\\RestaurantOrdersApplicationService\\RestaurantOrdersApplicationService.Manager\\RestaurantOrdersApplicationService.Manager.csproj": {
+                "projectPath": "D:\\Restaurant-Orders\\RestaurantOrdersApplicationService\\RestaurantOrdersApplicationService.Manager\\RestaurantOrdersApplicationService.Manager.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[8.1.1, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.1.5, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-rc.1.21463.6\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Restaurant-Orders\\RestaurantOrdersApplicationService\\RestaurantOrdersApplicationService.DatabaseContext\\RestaurantOrdersApplicationService.DatabaseContext.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Restaurant-Orders\\RestaurantOrdersApplicationService\\RestaurantOrdersApplicationService.DatabaseContext\\RestaurantOrdersApplicationService.DatabaseContext.csproj",
+        "projectName": "RestaurantOrdersApplicationService.DatabaseContext",
+        "projectPath": "D:\\Restaurant-Orders\\RestaurantOrdersApplicationService\\RestaurantOrdersApplicationService.DatabaseContext\\RestaurantOrdersApplicationService.DatabaseContext.csproj",
+        "packagesPath": "C:\\Users\\Sunil\\.nuget\\packages\\",
+        "outputPath": "D:\\Restaurant-Orders\\RestaurantOrdersApplicationService\\RestaurantOrdersApplicationService.DatabaseContext\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Sunil\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\Restaurant-Orders\\RestaurantOrdersApplicationService\\RestaurantOrdersApplicationService.Domain\\RestaurantOrdersApplicationService.Domain.csproj": {
+                "projectPath": "D:\\Restaurant-Orders\\RestaurantOrdersApplicationService\\RestaurantOrdersApplicationService.Domain\\RestaurantOrdersApplicationService.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.10, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-rc.1.21463.6\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Restaurant-Orders\\RestaurantOrdersApplicationService\\RestaurantOrdersApplicationService.Domain\\RestaurantOrdersApplicationService.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Restaurant-Orders\\RestaurantOrdersApplicationService\\RestaurantOrdersApplicationService.Domain\\RestaurantOrdersApplicationService.Domain.csproj",
+        "projectName": "RestaurantOrdersApplicationService.Domain",
+        "projectPath": "D:\\Restaurant-Orders\\RestaurantOrdersApplicationService\\RestaurantOrdersApplicationService.Domain\\RestaurantOrdersApplicationService.Domain.csproj",
+        "packagesPath": "C:\\Users\\Sunil\\.nuget\\packages\\",
+        "outputPath": "D:\\Restaurant-Orders\\RestaurantOrdersApplicationService\\RestaurantOrdersApplicationService.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Sunil\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-rc.1.21463.6\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Restaurant-Orders\\RestaurantOrdersApplicationService\\RestaurantOrdersApplicationService.Manager\\RestaurantOrdersApplicationService.Manager.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Restaurant-Orders\\RestaurantOrdersApplicationService\\RestaurantOrdersApplicationService.Manager\\RestaurantOrdersApplicationService.Manager.csproj",
+        "projectName": "RestaurantOrdersApplicationService.Manager",
+        "projectPath": "D:\\Restaurant-Orders\\RestaurantOrdersApplicationService\\RestaurantOrdersApplicationService.Manager\\RestaurantOrdersApplicationService.Manager.csproj",
+        "packagesPath": "C:\\Users\\Sunil\\.nuget\\packages\\",
+        "outputPath": "D:\\Restaurant-Orders\\RestaurantOrdersApplicationService\\RestaurantOrdersApplicationService.Manager\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Sunil\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\Restaurant-Orders\\RestaurantOrdersApplicationService\\RestaurantOrdersApplicationService.Repository\\RestaurantOrdersApplicationService.Repository.csproj": {
+                "projectPath": "D:\\Restaurant-Orders\\RestaurantOrdersApplicationService\\RestaurantOrdersApplicationService.Repository\\RestaurantOrdersApplicationService.Repository.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-rc.1.21463.6\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Restaurant-Orders\\RestaurantOrdersApplicationService\\RestaurantOrdersApplicationService.Repository\\RestaurantOrdersApplicationService.Repository.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Restaurant-Orders\\RestaurantOrdersApplicationService\\RestaurantOrdersApplicationService.Repository\\RestaurantOrdersApplicationService.Repository.csproj",
+        "projectName": "RestaurantOrdersApplicationService.Repository",
+        "projectPath": "D:\\Restaurant-Orders\\RestaurantOrdersApplicationService\\RestaurantOrdersApplicationService.Repository\\RestaurantOrdersApplicationService.Repository.csproj",
+        "packagesPath": "C:\\Users\\Sunil\\.nuget\\packages\\",
+        "outputPath": "D:\\Restaurant-Orders\\RestaurantOrdersApplicationService\\RestaurantOrdersApplicationService.Repository\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Sunil\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\Restaurant-Orders\\RestaurantOrdersApplicationService\\RestaurantOrdersApplicationService.DatabaseContext\\RestaurantOrdersApplicationService.DatabaseContext.csproj": {
+                "projectPath": "D:\\Restaurant-Orders\\RestaurantOrdersApplicationService\\RestaurantOrdersApplicationService.DatabaseContext\\RestaurantOrdersApplicationService.DatabaseContext.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-rc.1.21463.6\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

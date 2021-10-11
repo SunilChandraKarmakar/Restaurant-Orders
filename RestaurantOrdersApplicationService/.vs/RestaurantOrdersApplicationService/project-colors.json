@@ -1,0 +1,36 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "d3cd75fb-9b49-4cb2-b03e-bfcca3c4f7e3": {
+      "ProjectGuid": "d3cd75fb-9b49-4cb2-b03e-bfcca3c4f7e3",
+      "DisplayName": "RestaurantOrdersApplicationService.Domain",
+      "ColorIndex": 0
+    },
+    "24af3334-645f-477b-94d7-a594b95ef963": {
+      "ProjectGuid": "24af3334-645f-477b-94d7-a594b95ef963",
+      "DisplayName": "RestaurantOrdersApplicationService.DatabaseContext",
+      "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "bda8d6ed-0a9e-41c2-b59e-f4f4d7006c6b": {
+      "ProjectGuid": "bda8d6ed-0a9e-41c2-b59e-f4f4d7006c6b",
+      "DisplayName": "RestaurantOrdersApplicationService.Repository",
+      "ColorIndex": 2
+    },
+    "843ca1b7-e730-4c13-a218-d81a124267c9": {
+      "ProjectGuid": "843ca1b7-e730-4c13-a218-d81a124267c9",
+      "DisplayName": "RestaurantOrdersApplicationService.Manager",
+      "ColorIndex": 3
+    },
+    "d0bf608f-c64b-495d-afba-bc7bf51d20f4": {
+      "ProjectGuid": "d0bf608f-c64b-495d-afba-bc7bf51d20f4",
+      "DisplayName": "RestaurantOrdersApplicationService.Api",
+      "ColorIndex": 4
+    }
+  },
+  "NextColorIndex": 5
+}

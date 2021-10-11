@@ -24,6 +24,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Manager", "Manager", "{FBF2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantOrdersApplicationService.Manager", "RestaurantOrdersApplicationService.Manager\RestaurantOrdersApplicationService.Manager.csproj", "{843CA1B7-E730-4C13-A218-D81A124267C9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{60B7E952-F592-4A1D-AC22-49BDE835A953}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantOrdersApplicationService.Api", "RestaurantOrdersApplicationService.Api\RestaurantOrdersApplicationService.Api.csproj", "{D0BF608F-C64B-495D-AFBA-BC7BF51D20F4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +50,10 @@ Global
 		{843CA1B7-E730-4C13-A218-D81A124267C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{843CA1B7-E730-4C13-A218-D81A124267C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{843CA1B7-E730-4C13-A218-D81A124267C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0BF608F-C64B-495D-AFBA-BC7BF51D20F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0BF608F-C64B-495D-AFBA-BC7BF51D20F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0BF608F-C64B-495D-AFBA-BC7BF51D20F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0BF608F-C64B-495D-AFBA-BC7BF51D20F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +63,7 @@ Global
 		{24AF3334-645F-477B-94D7-A594B95EF963} = {E6207CAC-302C-4F93-B2E4-27115553215A}
 		{BDA8D6ED-0A9E-41C2-B59E-F4F4D7006C6B} = {151D2D17-7BE8-4E79-AC90-DC5F74A4542D}
 		{843CA1B7-E730-4C13-A218-D81A124267C9} = {FBF2A8E6-D5BE-4129-AC7A-AB6D8AAB8A41}
+		{D0BF608F-C64B-495D-AFBA-BC7BF51D20F4} = {60B7E952-F592-4A1D-AC22-49BDE835A953}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7A461E04-1BE0-4994-8A82-FD69EE386C2B}

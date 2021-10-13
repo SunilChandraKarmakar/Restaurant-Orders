@@ -10,6 +10,7 @@ build_property.RootNamespace = RestaurantOrdersApplicationService.Api
 build_property.RootNamespace = RestaurantOrdersApplicationService.Api
 build_property.ProjectDir = D:\Restaurant-Orders\RestaurantOrdersApplicationService\RestaurantOrdersApplicationService.Api\
 build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
 build_property.MSBuildProjectDirectory = D:\Restaurant-Orders\RestaurantOrdersApplicationService\RestaurantOrdersApplicationService.Api
 build_property._RazorSourceGeneratorDebug = 

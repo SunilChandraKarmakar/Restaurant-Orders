@@ -4,10 +4,10 @@ import { CustomerListComponent } from './components/customer-list/customer-list.
 import { HomepageComponent } from './components/homepage/homepage.component';
 
 const routes: Routes = [
-  { path: '', component : HomepageComponent, pathMatch: 'full' },
-  { path: 'home', component : HomepageComponent, pathMatch: 'full' },
+  { path: '', component : HomepageComponent },
+  { path: 'home', component : HomepageComponent },
 
-  { path: 'customers', component : CustomerListComponent, pathMatch: 'full' },
+  { path: 'customers', component : CustomerListComponent }
 ];
 
 @NgModule({

@@ -1,3 +1,39 @@
-<p>
-  customer-list works!
-</p>
+<div class="row">
+  <div class="col-md-12">
+    <h5 class="text-center">Customers Info</h5>
+    <hr>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <table id="example" class="table table-striped" style="width:100%">
+      <thead>
+          <tr>
+            <th>Name</th>
+            <th>Phone Number</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Action</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let customer of customers">
+            <td>{{ customer.name }}</td>
+            <td>{{ customer.phoneNumber }}</td>
+            <td>{{ customer.email }}</td>
+            <td>{{ customer.address }}</td>
+            <td></td>
+          </tr>
+      </tbody>
+      <tfoot>
+          <tr>
+            <th>Name</th>
+            <th>Phone Number</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Action</th>
+          </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>

@@ -10,6 +10,8 @@ namespace RestaurantOrdersApplicationService.Api.Configuration.Automapper
         {
             // For Customer Mapping
             CreateMap<Customer, CustomerViewModel>();
+            CreateMap<CustomerUpsertModel, Customer>();
+
         }
     }
 }

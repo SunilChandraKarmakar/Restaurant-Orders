@@ -1,0 +1,41 @@
+<div class="row mt-2">
+  <div class="col-md-12">
+    <h4 class="text-center">Create Customer</h4>
+    <hr>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-body">
+        <form method="post" [formGroup]="customerFormGroup" class="row g-3">
+          <div class="col-md-12">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" id="name" name="name" formControlName="name" class="form-control">
+            <span *ngIf="customerFormGroup.get('name')!.invalid && customerFormGroup.get('name')!.touched" class="text-danger">Name is required. (Minumam 2 and Maximum 20 character)</span>
+            <span *ngIf="customerFormGroup.get('name')!.minLength || customerFormGroup.get('name')!.maxLength" class="text-danger">Name is required. (Minumam 2 and Maximum 20 character)</span>
+          </div>
+          <div class="col-md-6">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" id="email" name="email" formControlName="email" class="form-control">
+            <span *ngIf="customerFormGroup.get('email')!.invalid && customerFormGroup.get('email')!.touched" class="text-danger">Email is required. (Minumam 11 character)</span>
+          </div>
+          <div class="col-md-6">
+            <label for="phoneNumber" class="form-label">Phone Number</label>
+            <input type="number" id="phoneNumber" name="phoneNumber" formControlName="phoneNumber" class="form-control">
+            <span *ngIf="customerFormGroup.get('phoneNumber')!.invalid && customerFormGroup.get('phoneNumber')!.touched" class="text-danger">Phone number is required.</span>
+          </div>
+          <div class="col-md-12">
+            <label for="address" class="form-label">Address</label>
+            <textarea type="text" id="address" name="address" formControlName="address" class="form-control" placeholder="1234 Main St"></textarea>
+            <span *ngIf="customerFormGroup.get('address')!.invalid && customerFormGroup.get('address')!.touched" class="text-danger">Address is required. (Minumam 2 and Maximum 50 character)</span>
+          </div>
+          <div class="col-md-12">
+            <button type="submit" [disabled]="customerFormGroup.invalid" class="btn btn-success">Submit</button>
+            <a class="btn btn-primary" routerLink="../../customers" style="margin-left: 5px;">Back To List</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { CustomerUpsertModel } from 'src/app/models/customer/CustomerUpsertModel';
+import { CustomerService } from 'src/app/services/customer.service';
 
 @Component({
   selector: 'app-customer-create',
@@ -9,8 +13,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class CustomerCreateComponent implements OnInit {
 
   customerFormGroup: FormGroup;
+  createCustomerModel: CustomerUpsertModel = new CustomerUpsertModel();
 
-  constructor() { }
+  constructor(private customerService: CustomerService, private _router: Router, private _toastr: ToastrService) { }
 
   ngOnInit() {
     this.customerFormGroup = new FormGroup({
@@ -21,4 +26,13 @@ export class CustomerCreateComponent implements OnInit {
     });
   }
 
+  saveCustomer(): void {
+    this.createCustomerModel = this.customerFormGroup.value;
+    
+    this.customerService.post(this.createCustomerModel).subscribe((res) => {
+      this._toastr.success('Customer Created Successfull', 'Successfull');
+      // this.customerFormGroup.reset();
+      // return this._router.navigate(['customers']);
+    })
+  }
 }

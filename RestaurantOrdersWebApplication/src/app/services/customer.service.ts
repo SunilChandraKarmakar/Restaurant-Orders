@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { CustomerUpsertModel } from '../models/customer/CustomerUpsertModel';
 import { CustomerViewModel } from '../models/customer/CustomerViewModel';
 
 @Injectable({
@@ -18,8 +19,13 @@ export class CustomerService {
   constructor(private _httpClient: HttpClient) { }
 
   get(): Observable<CustomerViewModel[]> {
-    let getCustomers: string = this._baseUrl + 'customer';
-    return this._httpClient.get<CustomerViewModel[]>(getCustomers); 
+    let getCustomersUrl: string = this._baseUrl + 'customer';
+    return this._httpClient.get<CustomerViewModel[]>(getCustomersUrl); 
+  }
+
+  post(customerCreateModel: CustomerUpsertModel): Observable<CustomerViewModel> {
+    let createCustomerUrl: string = this._baseUrl + 'customer';
+    return this._httpClient.post<CustomerViewModel>(createCustomerUrl, customerCreateModel, this.httpOptions);
   }
 
 }

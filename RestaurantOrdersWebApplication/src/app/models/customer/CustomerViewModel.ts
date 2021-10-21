@@ -1,5 +1,5 @@
 export class CustomerViewModel {
-    id: string;
+    id: number;
     name: string;
     phoneNumber: string;
     email: string;

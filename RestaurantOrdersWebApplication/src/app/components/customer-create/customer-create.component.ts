@@ -19,6 +19,7 @@ export class CustomerCreateComponent implements OnInit {
 
   ngOnInit() {
     this.customerFormGroup = new FormGroup({
+      'id': new FormControl(0),
       'name': new FormControl(null, [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
       'email': new FormControl(null, [Validators.required, Validators.email, Validators.minLength(11)]),
       'phoneNumber': new FormControl(null, Validators.required),
@@ -30,9 +31,10 @@ export class CustomerCreateComponent implements OnInit {
     this.createCustomerModel = this.customerFormGroup.value;
     
     this.customerService.post(this.createCustomerModel).subscribe((res) => {
+      console.log('Call post method in customer create component.');
       this._toastr.success('Customer Created Successfull', 'Successfull');
-      // this.customerFormGroup.reset();
-      // return this._router.navigate(['customers']);
+      this.customerFormGroup.reset();
+      return this._router.navigate(['customers']);
     })
   }
 }

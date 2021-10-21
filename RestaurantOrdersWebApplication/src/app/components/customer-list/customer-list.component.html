@@ -23,7 +23,10 @@
             <td>{{ customer.phoneNumber }}</td>
             <td>{{ customer.email }}</td>
             <td>{{ customer.address }}</td>
-            <td> Action </td>
+            <td> 
+              <a (click)="edit(customer.id)" class="btn btn-outline-info btn-sm" style="margin-right: 3px;">Edit</a>
+              <a class="btn btn-outline-danger btn-sm">Delete</a>
+            </td>
           </tr>
       </tbody>
       <tfoot>

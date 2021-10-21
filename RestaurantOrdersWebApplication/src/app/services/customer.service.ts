@@ -10,7 +10,7 @@ import { CustomerViewModel } from '../models/customer/CustomerViewModel';
 
 export class CustomerService {
 
-  private _baseUrl: string = 'https://localhost:7036/api/';
+  private _baseUrl: string = 'https://localhost:44312/api/';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -23,8 +23,10 @@ export class CustomerService {
     return this._httpClient.get<CustomerViewModel[]>(getCustomersUrl); 
   }
 
-  post(customerCreateModel: CustomerUpsertModel): Observable<CustomerViewModel> {
+  post(customerCreateModel: CustomerUpsertModel): Observable<CustomerViewModel> {    
+    console.log('Call post method in customer service.');
     let createCustomerUrl: string = this._baseUrl + 'customer';
+    console.log('Customer Obj : ', customerCreateModel);
     return this._httpClient.post<CustomerViewModel>(createCustomerUrl, customerCreateModel, this.httpOptions);
   }
 

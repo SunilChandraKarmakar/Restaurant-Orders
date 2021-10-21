@@ -10,13 +10,15 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { CustomerCreateComponent } from './components/customer-create/customer-create.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
+import { CustomerEditComponent } from './components/customer-edit/customer-edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomepageComponent,
     CustomerListComponent,
-    CustomerCreateComponent
+    CustomerCreateComponent,
+    CustomerEditComponent
   ],
   imports: [
     BrowserModule,

@@ -18,16 +18,30 @@ export class CustomerService {
   
   constructor(private _httpClient: HttpClient) { }
 
-  get(): Observable<CustomerViewModel[]> {
+  getCustomers(): Observable<CustomerViewModel[]> {
     let getCustomersUrl: string = this._baseUrl + 'customer';
     return this._httpClient.get<CustomerViewModel[]>(getCustomersUrl); 
   }
 
-  post(customerCreateModel: CustomerUpsertModel): Observable<CustomerViewModel> {    
-    console.log('Call post method in customer service.');
+  getCustomer(id: number): Observable<CustomerViewModel> {
+    let getCustomerUrl: string = this._baseUrl + 'customer/' + id;
+    console.log('get customer : ', getCustomerUrl);
+    return this._httpClient.get<CustomerViewModel>(getCustomerUrl); 
+  }
+
+  post(customerCreateModel: CustomerUpsertModel): Observable<CustomerViewModel> {  
     let createCustomerUrl: string = this._baseUrl + 'customer';
-    console.log('Customer Obj : ', customerCreateModel);
     return this._httpClient.post<CustomerViewModel>(createCustomerUrl, customerCreateModel, this.httpOptions);
+  }
+
+  put(customerEditModel: CustomerUpsertModel): Observable<CustomerViewModel> {
+    let editCustomerUrl: string = this._baseUrl + 'customer/' + customerEditModel.id;
+    return this._httpClient.put<CustomerViewModel>(editCustomerUrl, customerEditModel, this.httpOptions);
+  }
+
+  delete(id: number): Observable<CustomerViewModel> {
+    let deleteCustomerUrl: string = this._baseUrl + 'customer/' + id;
+    return this._httpClient.delete<CustomerViewModel>(deleteCustomerUrl, this.httpOptions);
   }
 
 }

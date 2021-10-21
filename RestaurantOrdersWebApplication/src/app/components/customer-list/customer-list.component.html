@@ -25,7 +25,7 @@
             <td>{{ customer.address }}</td>
             <td> 
               <a (click)="edit(customer.id)" class="btn btn-outline-info btn-sm" style="margin-right: 3px;">Edit</a>
-              <a class="btn btn-outline-danger btn-sm">Delete</a>
+              <a (click)="delete(customer.id)" class="btn btn-outline-danger btn-sm">Delete</a>
             </td>
           </tr>
       </tbody>

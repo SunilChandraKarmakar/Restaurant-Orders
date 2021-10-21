@@ -31,8 +31,8 @@
             <span *ngIf="customerEditFormGroup.get('address')!.invalid && customerEditFormGroup.get('address')!.touched" class="text-danger">Address is required. (Minumam 2 and Maximum 50 character)</span>
           </div>
           <div class="col-md-12">
-            <button type="submit" [disabled]="customerEditFormGroup.invalid" class="btn btn-success">Submit</button>
-            <a class="btn btn-primary" routerLink="../../customers" style="margin-left: 5px;">Back To List</a>
+            <button type="submit" (click)="edit()" [disabled]="customerEditFormGroup.invalid" class="btn btn-success">Update</button>
+            <a class="btn btn-primary" routerLink="../../../customers" style="margin-left: 5px;">Back To List</a>
           </div>
         </form>
       </div>

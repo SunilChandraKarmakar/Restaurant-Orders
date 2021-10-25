@@ -32,6 +32,7 @@
           </div>
           <div class="col-md-12">
             <button type="submit" (click)="saveCustomer()" [disabled]="customerFormGroup.invalid" class="btn btn-success">Submit</button>
+            <button type="submit" (click)="checkEmail()" class="btn btn-success">Check Email</button>
             <a class="btn btn-primary" routerLink="../../customers" style="margin-left: 5px;">Back To List</a>
           </div>
         </form>

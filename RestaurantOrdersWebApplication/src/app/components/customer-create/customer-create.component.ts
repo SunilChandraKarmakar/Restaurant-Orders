@@ -14,6 +14,7 @@ export class CustomerCreateComponent implements OnInit {
 
   customerFormGroup: FormGroup;
   createCustomerModel: CustomerUpsertModel = new CustomerUpsertModel();
+  email: string;
 
   constructor(private customerService: CustomerService, private _router: Router, private _toastr: ToastrService) { }
 
@@ -24,6 +25,10 @@ export class CustomerCreateComponent implements OnInit {
       'email': new FormControl(null, [Validators.required, Validators.email, Validators.minLength(11)]),
       'phoneNumber': new FormControl(null, Validators.required),
       'address': new FormControl(null, [Validators.required, Validators.minLength(2), Validators.maxLength(50)])
+    });
+
+    this.customerFormGroup.get('email')?.valueChanges.subscribe((res) => {
+      this.email = res;
     });
   }
 
@@ -36,5 +41,9 @@ export class CustomerCreateComponent implements OnInit {
       this.customerFormGroup.reset();
       return this._router.navigate(['customers']);
     })
+  }
+
+  checkEmail(): void {
+    console.log(this.email);
   }
 }

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CustomerViewModel } from 'src/app/models/customer/CustomerViewModel';
 import { CustomerService } from 'src/app/services/customer.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-customer-list',
@@ -31,10 +32,27 @@ export class CustomerListComponent implements OnInit {
   }
 
   delete(id: number): void {
-    this._customerService.delete(id).subscribe((res) => {
-      this._toastr.success('Customer Delete Successfull', 'Successfull');
-      this.ngOnInit();
-    });
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6 ',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        );
+
+        this._customerService.delete(id).subscribe((res) => {
+          this.ngOnInit();
+        });
+      }
+    })
   }
 
 }

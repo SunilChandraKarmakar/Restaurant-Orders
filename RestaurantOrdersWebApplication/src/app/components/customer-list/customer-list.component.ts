@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Subject } from 'rxjs';
 import { CustomerViewModel } from 'src/app/models/customer/CustomerViewModel';
 import { CustomerService } from 'src/app/services/customer.service';
 import Swal from 'sweetalert2';
@@ -11,15 +12,29 @@ import Swal from 'sweetalert2';
   styleUrls: ['./customer-list.component.scss']
 })
 
-export class CustomerListComponent implements OnInit {
+export class CustomerListComponent implements OnInit, OnDestroy {
+  
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject<any>();
 
   customers: CustomerViewModel[] = [];
   constructor(private _customerService: CustomerService, private _toastr: ToastrService,  private _router: Router) { }
 
   ngOnInit() {
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 5
+    };
+
     this._customerService.getCustomers().subscribe((res) => {
       this.customers = res;
+      this.dtTrigger.next();
     });
+  }
+
+  ngOnDestroy() {
+    // Do not forget to unsubscribe the event
+    this.dtTrigger.unsubscribe();
   }
 
   edit(id: number) {

@@ -11,6 +11,7 @@ import { CustomerCreateComponent } from './components/customer-create/customer-c
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { CustomerEditComponent } from './components/customer-edit/customer-edit.component';
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { CustomerEditComponent } from './components/customer-edit/customer-edit.
       progressBar: true,
       progressAnimation: 'increasing',
       preventDuplicates: true
-    })
+    }),
+    DataTablesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

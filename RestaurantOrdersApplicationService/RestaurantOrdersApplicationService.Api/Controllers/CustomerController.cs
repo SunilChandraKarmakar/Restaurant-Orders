@@ -111,5 +111,15 @@ namespace RestaurantOrdersApplicationService.Api.Controllers
             CustomerViewModel deletedCustomerInfo = _mapper.Map<CustomerViewModel>(existCustomerInfo);
             return Ok(deletedCustomerInfo);
         }
+
+        // GET api/<CustomerController>/emailaddress
+        [HttpGet("{email}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<bool>> ExistCustomerEmail(string email)
+        {
+            bool result = await _customerManager.IsExistCustomerEmail(email);
+            return Ok(result);
+        }
     }
 }

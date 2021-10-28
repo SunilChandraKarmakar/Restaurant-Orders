@@ -10,7 +10,7 @@ import { CustomerViewModel } from '../models/customer/CustomerViewModel';
 
 export class CustomerService {
 
-  private _baseUrl: string = 'https://localhost:44312/api/';
+  private _baseUrl: string = 'https://localhost:44312/api';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -19,29 +19,33 @@ export class CustomerService {
   constructor(private _httpClient: HttpClient) { }
 
   getCustomers(): Observable<CustomerViewModel[]> {
-    let getCustomersUrl: string = this._baseUrl + 'customer';
+    let getCustomersUrl: string = `${this._baseUrl}/customer`;
     return this._httpClient.get<CustomerViewModel[]>(getCustomersUrl); 
   }
 
   getCustomer(id: number): Observable<CustomerViewModel> {
-    let getCustomerUrl: string = this._baseUrl + 'customer/' + id;
+    let getCustomerUrl: string = `${this._baseUrl}/customer/${id}`;
     console.log('get customer : ', getCustomerUrl);
     return this._httpClient.get<CustomerViewModel>(getCustomerUrl); 
   }
 
   post(customerCreateModel: CustomerUpsertModel): Observable<CustomerViewModel> {  
-    let createCustomerUrl: string = this._baseUrl + 'customer';
+    let createCustomerUrl: string = `${this._baseUrl}/customer`;
     return this._httpClient.post<CustomerViewModel>(createCustomerUrl, customerCreateModel, this.httpOptions);
   }
 
   put(customerEditModel: CustomerUpsertModel): Observable<CustomerViewModel> {
-    let editCustomerUrl: string = this._baseUrl + 'customer/' + customerEditModel.id;
+    let editCustomerUrl: string = `${this._baseUrl}/customer/${customerEditModel.id}`;
     return this._httpClient.put<CustomerViewModel>(editCustomerUrl, customerEditModel, this.httpOptions);
   }
 
   delete(id: number): Observable<CustomerViewModel> {
-    let deleteCustomerUrl: string = this._baseUrl + 'customer/' + id;
+    let deleteCustomerUrl: string = `${this._baseUrl}/customer/${id}`;
     return this._httpClient.delete<CustomerViewModel>(deleteCustomerUrl, this.httpOptions);
   }
 
+  existCustomerEmail(email: string): Observable<boolean> {
+    let checkExistCustomerEmailUrl: string = `${this._baseUrl}/customer/${email}`;
+    return this._httpClient.get<boolean>(checkExistCustomerEmailUrl);
+  }
 }

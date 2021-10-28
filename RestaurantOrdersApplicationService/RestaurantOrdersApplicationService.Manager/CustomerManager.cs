@@ -12,5 +12,10 @@ namespace RestaurantOrdersApplicationService.Manager
         {
             _customerRepository = customerRepository;
         }
+
+        public async Task<bool> IsExistCustomerEmail(string email)
+        {
+            return await _customerRepository.IsExistCustomerEmail(email);
+        }
     }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -27,16 +28,7 @@ export class CustomerCreateComponent implements OnInit {
       address: new FormControl(null, [Validators.required, Validators.minLength(2), Validators.maxLength(50)])
     });
 
-    let email: string = '';
-
-    this.customerCreateForm.get('email')?.valueChanges.subscribe((res) => {
-      email = res;
-    });
-
-    this._customerService.existCustomerEmail(email).subscribe((res) => {
-      this.isExistCustomerEmail = res;
-      console.log('Recived value : ', this.isExistCustomerEmail);
-    });
+    this.checkExistCustomerEmail();
   }
 
   get name() {
@@ -65,8 +57,15 @@ export class CustomerCreateComponent implements OnInit {
     })
   }
 
-  // checkExistCustomerEmail(): void {
-  //   let email: string = '';
-   
-  // }
+  checkExistCustomerEmail(): void {
+    this.email.valueChanges.subscribe((res) => {      
+      if(res == undefined || res == '') {
+        return;
+      }
+
+      this._customerService.existCustomerEmail(res).subscribe((res) => {
+        this.isExistCustomerEmail = res;
+      });
+    });
+  }
 }

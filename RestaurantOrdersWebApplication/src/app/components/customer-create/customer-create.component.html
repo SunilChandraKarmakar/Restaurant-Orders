@@ -21,7 +21,7 @@
           <div class="col-md-6">
             <label for="email" class="form-label">Email</label>
             <input type="email" id="email" name="email" formControlName="email" 
-              [ngClass]="{'form-control': true, 'is-invalid': !email.valid && email.touched, 'is-valid': email.valid}">
+              [ngClass]="{'form-control': true, 'is-invalid': !email.valid && email.touched || isExistCustomerEmail, 'is-valid': email.valid}">
             <span *ngIf="email.errors?.required && email.touched" class="text-danger"> Email is required. </span>
             <span *ngIf="email.hasError('minlength') && email.touched" class="text-danger"> Minuam 11 character is required. </span>
             <span *ngIf="email.errors?.pattern && email.touched" class="text-danger"> Enter valid email. </span>
@@ -43,7 +43,7 @@
             <span *ngIf="address.hasError('minlength') && address.touched" class="text-danger"> Minumam 2 character is required. </span>
           </div>
           <div class="col-md-12">
-            <button type="submit" (click)="saveCustomer()" [disabled]="customerCreateForm.invalid" class="btn btn-success">Submit</button>
+            <button type="submit" (click)="saveCustomer()" [disabled]="customerCreateForm.invalid || isExistCustomerEmail" class="btn btn-success">Submit</button>
             <a class="btn btn-primary" routerLink="../../customers" style="margin-left: 5px;">Back To List</a>
           </div>
         </form>
@@ -51,5 +51,3 @@
     </div>
   </div>
 </div>
-
-{{isExistCustomerEmail | json }}

@@ -118,6 +118,9 @@ namespace RestaurantOrdersApplicationService.Api.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<bool>> ExistCustomerEmail(string email)
         {
+            if (email == "" || email == null)
+                return Ok(false);
+
             bool result = await _customerManager.IsExistCustomerEmail(email);
             return Ok(result);
         }

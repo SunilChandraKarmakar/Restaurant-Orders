@@ -1,0 +1,34 @@
+<div class="row pt-2">
+  <div class="col-md-12">
+    <h4 class="text-center">Payment Getway Info</h4>
+    <hr>
+    <a class="btn btn-primary" routerLink="../paymentgetway/create">Create Payment Getway</a>
+  </div>
+</div>
+<div class="row pt-3">
+  <div class="col-md-12">
+    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-striped" style="width:100%">
+      <thead>
+          <tr>
+            <th>Name</th>
+            <th>Action</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let paymentGetway of paymentGetways">
+            <td>{{ paymentGetway.name }}</td>
+            <td> 
+              <a (click)="edit(paymentGetway.id)" class="btn btn-outline-info btn-sm" style="margin-right: 3px;">Edit</a>
+              <a (click)="delete(paymentGetway.id)" class="btn btn-outline-danger btn-sm">Delete</a>
+            </td>
+          </tr>
+      </tbody>
+      <tfoot>
+          <tr>
+            <th>Name</th>
+            <th>Action</th>
+          </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>

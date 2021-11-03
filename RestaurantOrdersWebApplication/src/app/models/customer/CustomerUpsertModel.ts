@@ -1,5 +1,5 @@
 export class CustomerUpsertModel {
-    id: string;
+    id: number;
     name: string;
     phoneNumber: string;
     email: string;

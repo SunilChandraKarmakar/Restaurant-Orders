@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { CustomerEditComponent } from './components/customer-edit/customer-edit.component';
 import { DataTablesModule } from 'angular-datatables';
+import { PaymentgetwayListComponent } from './components/paymentgetway-list/paymentgetway-list.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { DataTablesModule } from 'angular-datatables';
     HomepageComponent,
     CustomerListComponent,
     CustomerCreateComponent,
-    CustomerEditComponent
+    CustomerEditComponent,
+    PaymentgetwayListComponent
   ],
   imports: [
     BrowserModule,

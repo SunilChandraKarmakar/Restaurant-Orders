@@ -2,23 +2,22 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subject } from 'rxjs';
-import { CustomerViewModel } from 'src/app/models/customer/CustomerViewModel';
-import { CustomerService } from 'src/app/services/customer.service';
+import { PaymentGetwayViewModel } from 'src/app/models/paymentgetway/PaymentGetwayViewModel';
+import { PaymentgetwayService } from 'src/app/services/paymentgetway.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-customer-list',
-  templateUrl: './customer-list.component.html',
-  styleUrls: ['./customer-list.component.scss']
+  selector: 'app-paymentgetway-list',
+  templateUrl: './paymentgetway-list.component.html',
+  styleUrls: ['./paymentgetway-list.component.scss']
 })
+export class PaymentgetwayListComponent implements OnInit, OnDestroy {
 
-export class CustomerListComponent implements OnInit, OnDestroy {
-  
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
-
-  customers: CustomerViewModel[] = [];
-  constructor(private _customerService: CustomerService, private _toastr: ToastrService,  private _router: Router) { }
+  
+  paymentGetways: PaymentGetwayViewModel[] = [];
+  constructor(private _paymentGetwayService: PaymentgetwayService, private _toastr: ToastrService,  private _router: Router) { }
 
   ngOnInit() {
     this.dtOptions = {
@@ -26,8 +25,8 @@ export class CustomerListComponent implements OnInit, OnDestroy {
       pageLength: 5
     };
 
-    this._customerService.getCustomers().subscribe((res) => {
-      this.customers = res;
+    this._paymentGetwayService.getPaymentGetways().subscribe((res) => {
+      this.paymentGetways = res;
       this.dtTrigger.next();
     });
   }
@@ -39,10 +38,10 @@ export class CustomerListComponent implements OnInit, OnDestroy {
 
   edit(id: number) {
     if(id == null || id == 0) {
-      return this._toastr.warning('Customer Can Not Find', 'Not Found');
+      return this._toastr.warning('Payment Getway Can Not Find', 'Not Found');
     }
     else {
-      return this._router.navigate([`customer/edit/${id}`]);
+      return this._router.navigate([`paymentgetways/edit/${id}`]);
     }
   }
 
@@ -63,10 +62,11 @@ export class CustomerListComponent implements OnInit, OnDestroy {
           'success'
         );
 
-        this._customerService.delete(id).subscribe((res) => {
+        this._paymentGetwayService.delete(id).subscribe((res) => {
           this.ngOnInit();
         });
       }
     })
   }
+
 }

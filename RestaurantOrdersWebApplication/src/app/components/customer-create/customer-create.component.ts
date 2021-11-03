@@ -20,7 +20,6 @@ export class CustomerCreateComponent implements OnInit {
 
   ngOnInit() {
     this.customerCreateForm = this._formBuilder.group({
-      id: new FormControl(),
       name: new FormControl(null, [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
       email: new FormControl(null, [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$'), Validators.email, Validators.minLength(11)]),
       phoneNumber: new FormControl(null, [Validators.required, Validators.pattern('[- +()0-9]+')]),
@@ -54,6 +53,8 @@ export class CustomerCreateComponent implements OnInit {
       this.customerCreateForm.reset();
       return this._router.navigate(['customers']);
     })
+
+    console.log('Model : ', this.customerCreateForm.value);
   }
 
   checkExistCustomerEmail(): void {

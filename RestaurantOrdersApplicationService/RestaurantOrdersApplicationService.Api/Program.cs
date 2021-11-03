@@ -18,6 +18,8 @@ builder.Services.AddAutoMapper(typeof(Program));
 
 builder.Services.AddScoped<ICustomerManager, CustomerManager>();
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+builder.Services.AddScoped<IPaymentGetwayManager, PaymentGetwayManager>();
+builder.Services.AddScoped<IPaymentGetwayRepository, PaymentGetwayRepository>();
 
 builder.Services.AddCors(option =>
 {

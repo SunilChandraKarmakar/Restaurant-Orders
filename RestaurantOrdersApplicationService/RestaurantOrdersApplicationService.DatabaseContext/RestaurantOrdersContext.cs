@@ -6,10 +6,12 @@ namespace RestaurantOrdersApplicationService.DatabaseContext
     public class RestaurantOrdersContext : DbContext
     {
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<PaymentGetway> PaymentGetways { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Customer>().HasIndex(c => new { c.Email, c.PhoneNumber }).IsUnique();
+            modelBuilder.Entity<PaymentGetway>().HasIndex(pg => pg.Name).IsUnique();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

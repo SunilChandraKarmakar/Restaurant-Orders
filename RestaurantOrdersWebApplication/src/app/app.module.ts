@@ -13,6 +13,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { CustomerEditComponent } from './components/customer-edit/customer-edit.component';
 import { DataTablesModule } from 'angular-datatables';
 import { PaymentgetwayListComponent } from './components/paymentgetway-list/paymentgetway-list.component';
+import { PaymentgetwayCreateComponent } from './components/paymentgetway-create/paymentgetway-create.component';
+import { PaymentgetwatEditComponent } from './components/paymentgetwat-edit/paymentgetwat-edit.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { PaymentgetwayListComponent } from './components/paymentgetway-list/paym
     CustomerListComponent,
     CustomerCreateComponent,
     CustomerEditComponent,
-    PaymentgetwayListComponent
+    PaymentgetwayListComponent,
+    PaymentgetwayCreateComponent,
+    PaymentgetwatEditComponent
   ],
   imports: [
     BrowserModule,

@@ -42,8 +42,8 @@ export class PaymentgetwayService {
     return this._httpClient.delete<PaymentGetwayViewModel>(deletePaymentGetwayUrl, this.httpOptions);
   }
 
-  // existCustomerEmail(email: string): Observable<boolean> {
-  //   const checkExistCustomerEmailUrl: string = `${this._baseUrl}/customer/${email}`;
-  //   return this._httpClient.get<boolean>(checkExistCustomerEmailUrl, this.httpOptions);
-  // }
+  existName(name: string): Observable<boolean> {
+    const checkExistNameUrl: string = `${this._baseUrl}/paymentgetway/${name}`;
+    return this._httpClient.get<boolean>(checkExistNameUrl, this.httpOptions);
+  }
 }

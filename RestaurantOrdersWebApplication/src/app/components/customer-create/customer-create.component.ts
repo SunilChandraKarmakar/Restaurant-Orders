@@ -53,8 +53,6 @@ export class CustomerCreateComponent implements OnInit {
       this.customerCreateForm.reset();
       return this._router.navigate(['customers']);
     })
-
-    console.log('Model : ', this.customerCreateForm.value);
   }
 
   checkExistCustomerEmail(): void {

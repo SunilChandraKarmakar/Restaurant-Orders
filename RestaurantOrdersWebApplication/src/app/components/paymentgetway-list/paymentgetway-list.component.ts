@@ -41,7 +41,7 @@ export class PaymentgetwayListComponent implements OnInit, OnDestroy {
       return this._toastr.warning('Payment Getway Can Not Find', 'Not Found');
     }
     else {
-      return this._router.navigate([`paymentgetways/edit/${id}`]);
+      return this._router.navigate([`paymentgetway/edit/${id}`]);
     }
   }
 

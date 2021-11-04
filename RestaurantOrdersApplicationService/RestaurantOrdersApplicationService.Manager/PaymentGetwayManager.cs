@@ -12,5 +12,10 @@ namespace RestaurantOrdersApplicationService.Manager
         {
             _paymentGetwayRepository = paymentGetwayRepository;
         }
+
+        public async Task<bool> IsExistName(string name)
+        {
+            return await _paymentGetwayRepository.IsExistName(name);
+        }
     }
 }

@@ -110,17 +110,17 @@ namespace RestaurantOrdersApplicationService.Api.Controllers
             return Ok(deletedPaymentGetwayInfo);
         }
 
-        //// GET api/<CustomerController>/emailaddress
-        //[HttpGet("{email}")]
-        //[ProducesResponseType(StatusCodes.Status200OK)]
-        //[ProducesResponseType(StatusCodes.Status404NotFound)]
-        //public async Task<ActionResult<bool>> ExistCustomerEmail(string email)
-        //{
-        //    if (email == "" || email == null)
-        //        return Ok(false);
+        // GET api/<CustomerController>/name
+        [HttpGet("{name}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<bool>> ExistName(string name)
+        {
+            if (name == "" || name == null)
+                return Ok(false);
 
-        //    bool result = await _paymentGetwayManager.IsExistCustomerEmail(email);
-        //    return Ok(result);
-        //}
+            bool result = await _paymentGetwayManager.IsExistName(name);
+            return Ok(result);
+        }
     }
 }

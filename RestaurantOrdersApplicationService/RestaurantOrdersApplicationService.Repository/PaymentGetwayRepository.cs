@@ -10,7 +10,7 @@ namespace RestaurantOrdersApplicationService.Repository
         {
             PaymentGetway existInfo = await _db.PaymentGetways.Where(pg => pg.Name == name).FirstOrDefaultAsync();
 
-            if (existInfo.Name != null)
+            if (existInfo != null)
                 return true;
 
             return false;

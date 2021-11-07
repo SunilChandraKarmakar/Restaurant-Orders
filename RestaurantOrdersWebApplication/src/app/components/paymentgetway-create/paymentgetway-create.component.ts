@@ -22,6 +22,8 @@ export class PaymentgetwayCreateComponent implements OnInit {
     this.paymentGetwayCreateForm = this._formBuilder.group({
       name: new FormControl(null, [Validators.required, Validators.minLength(2), Validators.maxLength(20)])
     });
+
+    this.checkExistName();
   }
 
   get name() {

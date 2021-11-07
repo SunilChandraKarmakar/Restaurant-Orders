@@ -11,6 +11,7 @@ import Swal from 'sweetalert2';
   templateUrl: './paymentgetway-list.component.html',
   styleUrls: ['./paymentgetway-list.component.scss']
 })
+
 export class PaymentgetwayListComponent implements OnInit, OnDestroy {
 
   dtOptions: DataTables.Settings = {};

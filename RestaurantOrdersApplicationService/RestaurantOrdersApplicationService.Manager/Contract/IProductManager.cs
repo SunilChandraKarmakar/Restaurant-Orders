@@ -1,4 +1,5 @@
 ﻿using RestaurantOrdersApplicationService.Domain;
+using System.Threading.Tasks;
 
 namespace RestaurantOrdersApplicationService.Manager.Contract
 {

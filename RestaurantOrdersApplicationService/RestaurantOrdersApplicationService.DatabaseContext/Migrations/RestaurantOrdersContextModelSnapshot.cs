@@ -72,6 +72,29 @@ namespace RestaurantOrdersApplicationService.DatabaseContext.Migrations
 
                     b.ToTable("PaymentGetways");
                 });
+
+            modelBuilder.Entity("RestaurantOrdersApplicationService.Domain.Product", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
+
+                    b.ToTable("Products");
+                });
 #pragma warning restore 612, 618
         }
     }

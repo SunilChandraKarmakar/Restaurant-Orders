@@ -15,6 +15,9 @@ import { DataTablesModule } from 'angular-datatables';
 import { PaymentgetwayListComponent } from './components/paymentgetway-list/paymentgetway-list.component';
 import { PaymentgetwayCreateComponent } from './components/paymentgetway-create/paymentgetway-create.component';
 import { PaymentgetwatEditComponent } from './components/paymentgetwat-edit/paymentgetwat-edit.component';
+import { ProductCreateComponent } from './components/product-create/product-create.component';
+import { ProductListComponent } from './components/product-list/product-list.component';
+import { ProductEditComponent } from './components/product-edit/product-edit.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { PaymentgetwatEditComponent } from './components/paymentgetwat-edit/paym
     CustomerEditComponent,
     PaymentgetwayListComponent,
     PaymentgetwayCreateComponent,
-    PaymentgetwatEditComponent
+    PaymentgetwatEditComponent,
+    ProductCreateComponent,
+    ProductListComponent,
+    ProductEditComponent
   ],
   imports: [
     BrowserModule,

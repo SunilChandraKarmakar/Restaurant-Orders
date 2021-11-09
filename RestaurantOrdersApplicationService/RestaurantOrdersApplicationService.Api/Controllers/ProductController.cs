@@ -4,9 +4,13 @@ using RestaurantOrdersApplicationService.Api.ViewModels.Product;
 using RestaurantOrdersApplicationService.Domain;
 using RestaurantOrdersApplicationService.Manager.Contract;
 
+// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
 namespace RestaurantOrdersApplicationService.Api.Controllers
 {
-    public class ProductController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ProductController : ControllerBase
     {
         private readonly IProductManager _productManager;
         private readonly IMapper _mapper;
@@ -106,7 +110,7 @@ namespace RestaurantOrdersApplicationService.Api.Controllers
             return Ok(deletedProductInfo);
         }
 
-        // GET api/<CustomerController>/emailaddress
+        // GET api/<ProductController>/name
         [HttpGet("{name}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

@@ -20,6 +20,8 @@ builder.Services.AddScoped<ICustomerManager, CustomerManager>();
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.AddScoped<IPaymentGetwayManager, PaymentGetwayManager>();
 builder.Services.AddScoped<IPaymentGetwayRepository, PaymentGetwayRepository>();
+builder.Services.AddScoped<IProductManager, ProductManager>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 builder.Services.AddCors(option =>
 {

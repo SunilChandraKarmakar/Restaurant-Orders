@@ -1,0 +1,37 @@
+<div class="row pt-2">
+  <div class="col-md-12">
+    <h4 class="text-center">Product Info</h4>
+    <hr>
+    <a class="btn btn-primary" routerLink="../product/create">Create Product</a>
+  </div>
+</div>
+<div class="row pt-3">
+  <div class="col-md-12">
+    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-striped" style="width:100%">
+      <thead>
+          <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Action</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let product of products">
+            <td>{{ product.name }}</td>
+            <td>{{ product.price }}</td>
+            <td> 
+              <a (click)="edit(product.id)" class="btn btn-outline-info btn-sm" style="margin-right: 3px;">Edit</a>
+              <a (click)="delete(product.id)" class="btn btn-outline-danger btn-sm">Delete</a>
+            </td>
+          </tr>
+      </tbody>
+      <tfoot>
+          <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Action</th>
+          </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>

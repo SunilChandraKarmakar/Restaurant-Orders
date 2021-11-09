@@ -7,6 +7,9 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { PaymentgetwatEditComponent } from './components/paymentgetwat-edit/paymentgetwat-edit.component';
 import { PaymentgetwayCreateComponent } from './components/paymentgetway-create/paymentgetway-create.component';
 import { PaymentgetwayListComponent } from './components/paymentgetway-list/paymentgetway-list.component';
+import { ProductCreateComponent } from './components/product-create/product-create.component';
+import { ProductEditComponent } from './components/product-edit/product-edit.component';
+import { ProductListComponent } from './components/product-list/product-list.component';
 
 const routes: Routes = [
   { path: '', component : HomepageComponent, pathMatch: 'full' },
@@ -18,7 +21,11 @@ const routes: Routes = [
 
   { path: 'paymentgetways', component : PaymentgetwayListComponent, pathMatch: 'full' },
   { path: 'paymentgetway/create', component : PaymentgetwayCreateComponent },
-  { path: 'paymentgetway/edit/:id', component : PaymentgetwatEditComponent }
+  { path: 'paymentgetway/edit/:id', component : PaymentgetwatEditComponent },
+
+  { path: 'products', component : ProductListComponent, pathMatch: 'full' },
+  { path: 'product/create', component : ProductCreateComponent },
+  { path: 'product/edit/:id', component : ProductEditComponent }
 ];
 
 @NgModule({

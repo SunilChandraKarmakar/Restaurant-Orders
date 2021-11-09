@@ -10,7 +10,6 @@ D:\Restaurant-Orders\RestaurantOrdersApplicationService\RestaurantOrdersApplicat
 D:\Restaurant-Orders\RestaurantOrdersApplicationService\RestaurantOrdersApplicationService.Api\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
 D:\Restaurant-Orders\RestaurantOrdersApplicationService\RestaurantOrdersApplicationService.Api\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\Restaurant-Orders\RestaurantOrdersApplicationService\RestaurantOrdersApplicationService.Api\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-D:\Restaurant-Orders\RestaurantOrdersApplicationService\RestaurantOrdersApplicationService.Api\obj\Debug\net6.0\RestaurantOrdersApplicationService.Api.GlobalUsings.g.cs
 D:\Restaurant-Orders\RestaurantOrdersApplicationService\RestaurantOrdersApplicationService.Api\obj\Debug\net6.0\RestaurantOrdersApplicationService.Api.csproj.AssemblyReference.cache
 D:\Restaurant-Orders\RestaurantOrdersApplicationService\RestaurantOrdersApplicationService.Api\obj\Debug\net6.0\RestaurantOrdersApplicationService.Api.GeneratedMSBuildEditorConfig.editorconfig
 D:\Restaurant-Orders\RestaurantOrdersApplicationService\RestaurantOrdersApplicationService.Api\obj\Debug\net6.0\RestaurantOrdersApplicationService.Api.AssemblyInfoInputs.cache

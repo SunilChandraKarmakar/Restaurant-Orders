@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ekX2l00fQUWrxSdsfucSjPGB8JhOfYOhE/3aFMGnjXd6mSDp0F77qP3D66DcPjyxhx9dXAFTWiPf2dW+0mABLg==",
+  "dgSpecHash": "lbwh3Na2TwrO95mdeUmFHjRJDQYfw0RR9f/ifnnXOpQ37+6M2DhbmolUR2VhHYx2WsJD3dQHG2HOJnK5lNecCA==",
   "success": true,
   "projectFilePath": "D:\\Restaurant-Orders\\RestaurantOrdersApplicationService\\RestaurantOrdersApplicationService.Api\\RestaurantOrdersApplicationService.Api.csproj",
   "expectedPackageFiles": [

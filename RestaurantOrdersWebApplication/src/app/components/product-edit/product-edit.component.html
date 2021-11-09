@@ -1,3 +1,35 @@
-<p>
-  product-edit works!
-</p>
+<div class="row pt-2">
+  <div class="col-md-12">
+    <h4 class="text-center">Update Product</h4>
+    <hr>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-body">
+        <form method="post" [formGroup]="productEditFormGroup" class="row g-3" autocomplete="off">
+          <input type="hidden" name="id" formControlName="id">
+          <div class="col-md-12">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" id="name" name="name" formControlName="name"
+              [ngClass]="{'form-control': true, 'is-invalid': !name.valid && name.touched, 'is-valid': name.valid}">
+            <span *ngIf="name.errors?.required && name.touched" class="text-danger"> Name is required. </span>
+            <span *ngIf="name.hasError('minlength') && name.touched" class="text-danger"> Minumam 2 character. </span>
+            <span *ngIf="name.hasError('maxlength') && name.touched" class="text-danger"> Maxumam 50 character. </span>
+          </div>
+          <div class="col-md-12">
+            <label for="price" class="form-label">Price</label>
+            <input type="number" id="price" name="price" formControlName="price" 
+              [ngClass]="{'form-control': true, 'is-invalid': !price.valid && price.touched, 'is-valid': price.valid}">
+            <span *ngIf="price.errors?.required && price.touched" class="text-danger"> Email is required. </span>
+          </div>
+          <div class="col-md-12">
+            <button type="submit" (click)="edit()" [disabled]="productEditFormGroup.invalid" class="btn btn-success">Update</button>
+            <a class="btn btn-primary" routerLink="../../../products" style="margin-left: 5px;">Back To List</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

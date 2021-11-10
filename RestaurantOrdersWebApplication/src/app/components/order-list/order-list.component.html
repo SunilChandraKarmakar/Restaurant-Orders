@@ -1,0 +1,43 @@
+<div class="row pt-2">
+  <div class="col-md-12">
+    <h4 class="text-center">Order Info</h4>
+    <hr>
+    <a class="btn btn-primary" routerLink="../order/create">Create Order</a>
+  </div>
+</div>
+<div class="row pt-3">
+  <div class="col-md-12">
+    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-striped" style="width:100%">
+      <thead>
+          <tr>
+            <th>Order Number</th>
+            <th>Customer</th>
+            <th>Payment Getway</th>
+            <th>Total Price</th>
+            <th>Action</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let order of orders">
+            <td>{{ order.orderNumber }}</td>
+            <td>{{ order.customer.name }}</td>
+            <td>{{ order.paymentGetway.name }}</td>
+            <td>{{ order.totalPrice }}</td>
+            <td> 
+              <a class="btn btn-outline-info btn-sm" style="margin-right: 3px;">Edit</a>
+              <a class="btn btn-outline-danger btn-sm">Delete</a>
+            </td>
+          </tr>
+      </tbody>
+      <tfoot>
+          <tr>
+            <th>Order Number</th>
+            <th>Customer</th>
+            <th>Payment Getway</th>
+            <th>Total Price</th>
+            <th>Action</th>
+          </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>

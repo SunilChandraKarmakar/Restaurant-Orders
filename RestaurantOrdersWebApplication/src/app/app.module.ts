@@ -18,6 +18,7 @@ import { PaymentgetwatEditComponent } from './components/paymentgetwat-edit/paym
 import { ProductCreateComponent } from './components/product-create/product-create.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductEditComponent } from './components/product-edit/product-edit.component';
+import { OrderListComponent } from './components/order-list/order-list.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ProductEditComponent } from './components/product-edit/product-edit.com
     PaymentgetwatEditComponent,
     ProductCreateComponent,
     ProductListComponent,
-    ProductEditComponent
+    ProductEditComponent,
+    OrderListComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerService } from 'src/app/services/customer.service';
+import { OrderService } from 'src/app/services/order.service';
 import { PaymentgetwayService } from 'src/app/services/paymentgetway.service';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -14,7 +15,9 @@ export class HomepageComponent implements OnInit {
   totalCustomer: number;
   totalPaymentGetway: number;
   totalProduct: number;
-  constructor(private _customerService: CustomerService, private _paymentGetwayService: PaymentgetwayService, private _productService: ProductService) { }
+  totalOrder: number
+
+  constructor(private _customerService: CustomerService, private _paymentGetwayService: PaymentgetwayService, private _productService: ProductService, private _orderService: OrderService) { }
 
   ngOnInit() {
     this._customerService.getCustomers().subscribe((res) => {
@@ -27,6 +30,10 @@ export class HomepageComponent implements OnInit {
 
     this._productService.getProducts().subscribe((res) => {
       this.totalProduct = res.length;
+    });
+
+    this._orderService.getOrders().subscribe((res) => {
+      this.totalOrder = res.length;
     });
   }
 

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using RestaurantOrdersApplicationService.Api.ViewModels.Customer;
+using RestaurantOrdersApplicationService.Api.ViewModels.Order;
 using RestaurantOrdersApplicationService.Api.ViewModels.PaymentGetway;
 using RestaurantOrdersApplicationService.Api.ViewModels.Product;
 using RestaurantOrdersApplicationService.Domain;
@@ -21,6 +22,9 @@ namespace RestaurantOrdersApplicationService.Api.Configuration.Automapper
             // For Product
             CreateMap<Product, ProductViewModel>();
             CreateMap<ProductUpsertModel, Product>();
+
+            // For Order
+            CreateMap<Order, OrderViewModel>();
         }
     }
 }

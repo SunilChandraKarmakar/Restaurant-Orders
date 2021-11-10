@@ -12,5 +12,10 @@ namespace RestaurantOrdersApplicationService.Manager
         {
             _orderRepository = orderRepository;
         }
+
+        public override async Task<IEnumerable<Order>> Get()
+        {
+            return await _orderRepository.Get();
+        }
     }
 }

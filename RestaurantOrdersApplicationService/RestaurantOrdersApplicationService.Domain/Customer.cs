@@ -25,5 +25,7 @@ namespace RestaurantOrdersApplicationService.Domain
         [StringLength(50, MinimumLength = 2)]
         [DataType(DataType.MultilineText)]
         public string Address { get; set; }
+
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

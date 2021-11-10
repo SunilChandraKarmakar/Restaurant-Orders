@@ -13,5 +13,7 @@ namespace RestaurantOrdersApplicationService.Domain
         [Required(ErrorMessage = "Provied Price.")]
         [DataType(DataType.Currency)]
         public double Price { get; set; }
+
+        public virtual ICollection<OrderDetails> OrderDetails { get; set; }
     }
 }

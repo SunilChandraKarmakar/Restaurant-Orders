@@ -9,5 +9,7 @@ namespace RestaurantOrdersApplicationService.Domain
         [Required(ErrorMessage = "Provied Name.")]
         [StringLength(30, MinimumLength = 2)]
         public string Name { get; set;}
+
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

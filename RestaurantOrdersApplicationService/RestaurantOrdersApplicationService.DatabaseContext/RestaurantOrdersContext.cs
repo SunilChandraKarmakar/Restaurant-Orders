@@ -8,12 +8,15 @@ namespace RestaurantOrdersApplicationService.DatabaseContext
         public DbSet<Customer> Customers { get; set; }
         public DbSet<PaymentGetway> PaymentGetways { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetails> OrderDetails { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Customer>().HasIndex(c => new { c.Email, c.PhoneNumber }).IsUnique();
             modelBuilder.Entity<PaymentGetway>().HasIndex(pg => pg.Name).IsUnique();
             modelBuilder.Entity<Product>().HasIndex(p => p.Name).IsUnique();
+            modelBuilder.Entity<Order>().HasIndex(o => o.OrderNumber).IsUnique();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

@@ -53,6 +53,64 @@ namespace RestaurantOrdersApplicationService.DatabaseContext.Migrations
                     b.ToTable("Customers");
                 });
 
+            modelBuilder.Entity("RestaurantOrdersApplicationService.Domain.Order", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("OrderNumber")
+                        .IsRequired()
+                        .HasMaxLength(7)
+                        .HasColumnType("nvarchar(7)");
+
+                    b.Property<int>("PaymentGetwayId")
+                        .HasColumnType("int");
+
+                    b.Property<double>("TotalPrice")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
+
+                    b.HasIndex("OrderNumber")
+                        .IsUnique();
+
+                    b.HasIndex("PaymentGetwayId");
+
+                    b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("RestaurantOrdersApplicationService.Domain.OrderDetails", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("OrderDetails");
+                });
+
             modelBuilder.Entity("RestaurantOrdersApplicationService.Domain.PaymentGetway", b =>
                 {
                     b.Property<int>("Id")
@@ -94,6 +152,64 @@ namespace RestaurantOrdersApplicationService.DatabaseContext.Migrations
                         .IsUnique();
 
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("RestaurantOrdersApplicationService.Domain.Order", b =>
+                {
+                    b.HasOne("RestaurantOrdersApplicationService.Domain.Customer", "Customer")
+                        .WithMany("Orders")
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("RestaurantOrdersApplicationService.Domain.PaymentGetway", "PaymentGetway")
+                        .WithMany("Orders")
+                        .HasForeignKey("PaymentGetwayId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
+
+                    b.Navigation("PaymentGetway");
+                });
+
+            modelBuilder.Entity("RestaurantOrdersApplicationService.Domain.OrderDetails", b =>
+                {
+                    b.HasOne("RestaurantOrdersApplicationService.Domain.Order", "Order")
+                        .WithMany("OrderDetails")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("RestaurantOrdersApplicationService.Domain.Product", "Product")
+                        .WithMany("OrderDetails")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Order");
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("RestaurantOrdersApplicationService.Domain.Customer", b =>
+                {
+                    b.Navigation("Orders");
+                });
+
+            modelBuilder.Entity("RestaurantOrdersApplicationService.Domain.Order", b =>
+                {
+                    b.Navigation("OrderDetails");
+                });
+
+            modelBuilder.Entity("RestaurantOrdersApplicationService.Domain.PaymentGetway", b =>
+                {
+                    b.Navigation("Orders");
+                });
+
+            modelBuilder.Entity("RestaurantOrdersApplicationService.Domain.Product", b =>
+                {
+                    b.Navigation("OrderDetails");
                 });
 #pragma warning restore 612, 618
         }

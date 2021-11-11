@@ -1,0 +1,110 @@
+<div class="row pt-2">
+  <div class="col-md-12">
+    <h4 class="text-center">Create Order</h4>
+    <hr>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-body">
+        <form method="post" [formGroup]="orderCreateForm" class="row g-3" autocomplete="off">
+          <div class="col-md-6">
+            <label for="orderNumber" class="form-label">Order Number</label>
+            <input type="text" id="orderNumber" name="orderNumber" formControlName="orderNumber" [ngClass]="{'form-control': true, 'is-invalid': !orderNumber.valid && orderNumber.touched, 'is-valid': orderNumber.valid}" readonly>
+            <span *ngIf="orderNumber.errors?.required && orderNumber.touched" class="text-danger"> Order Number is required. </span>
+            <span *ngIf="orderNumber.hasError('minlength') && orderNumber.touched" class="text-danger"> Minumam 7 character. </span>
+            <span *ngIf="orderNumber.hasError('maxlength') && orderNumber.touched" class="text-danger"> Maxumam 7 character. </span>
+          </div>
+          <div class="col-md-6">
+            <label for="paymentGetwayId" class="form-label">Payment Mehtod</label>
+            <select id="paymentGetwayId" name="paymentGetwayId" formControlName="paymentGetwayId" [ngClass]="{'form-control': true, 'is-invalid': (paymentGetwayId.touched || paymentGetwayId.dirty) && !paymentGetwayId.valid, 'is-valid': paymentGetwayId.valid}">
+              <option value="">-- Select One --</option>
+              <option *ngFor="let paymentGetway of paymentGetways" [value]="paymentGetway.id">{{paymentGetway.name}}</option>
+            </select>
+            <span *ngIf="paymentGetwayId.errors?.required && paymentGetwayId.touched" class="text-danger"> Payment Getway is required. </span>
+          </div>
+          <div class="col-md-6">
+            <label for="customerId" class="form-label">Customer</label>
+            <select id="customerId" name="customerId" formControlName="customerId" [ngClass]="{'form-control': true, 'is-invalid': (customerId.touched || customerId.dirty) && !customerId.valid, 'is-valid': customerId.valid}">
+              <option value="">-- Select One --</option>
+              <option *ngFor="let customer of customers" [value]="customer.id">{{customer.name}}</option>
+            </select>
+            <span *ngIf="customerId.errors?.required && customerId.touched" class="text-danger"> Customer is required. </span>
+          </div>
+          <div class="col-md-6">
+            <label for="totalPrice" class="form-label">Total Price</label>
+            <input type="number" id="totalPrice" name="totalPrice" formControlName="totalPrice" [ngClass]="{'form-control': true, 'is-invalid': !totalPrice.valid && totalPrice.touched, 'is-valid': totalPrice.valid}" readonly>
+            <span *ngIf="totalPrice.errors?.required && totalPrice.touched" class="text-danger"> Total Price is required. </span>
+          </div>
+          <div class="col-md-12">
+            <button type="submit" (click)="saveOrder()" [disabled]="orderCreateForm.invalid" class="btn btn-success">Submit</button>
+            <a class="btn btn-primary" routerLink="../../orders" style="margin-left: 5px;">Back To List</a>
+          </div>
+        </form>
+        <table class="table mt-4">
+          <thead>
+            <tr>
+              <th scope="col">Food</th>
+              <th scope="col">Price</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Total</th>
+              <th scope="col">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  Add Item
+                </button>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+             
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Order Food Item</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="post" [formGroup]="orderDetailsCreateForm" class="row g-3" autocomplete="off">
+          <div class="col-md-6">
+            <label for="productId" class="form-label">Product</label>
+            <select id="productId" name="productId" formControlName="productId" [ngClass]="{'form-control': true, 'is-invalid': (productId.touched || productId.dirty) && !productId.valid, 'is-valid': productId.valid}">
+              <option value="">-- Select One --</option>
+              <option *ngFor="let product of products" [value]="product.id">{{product.name}}</option>
+            </select>
+            <span *ngIf="productId.errors?.required && productId.touched" class="text-danger"> Product is required. </span>
+          </div>
+          <div class="col-md-6">
+            <label for="quantity" class="form-label">Quantity</label>
+            <input type="number" id="quantity" name="quantity" formControlName="quantity" [ngClass]="{'form-control': true, 'is-invalid': !quantity.valid && quantity.touched, 'is-valid': quantity.valid}">
+            <span *ngIf="quantity.errors?.required && quantity.touched" class="text-danger"> Quantity is required. </span>
+          </div>
+          <div class="col-md-6">
+            <label for="price" class="form-label">Price</label>
+            <input type="number" id="price" name="price" formControlName="price" [ngClass]="{'form-control': true, 'is-invalid': !price.valid && price.touched, 'is-valid': price.valid}" readonly>
+            <span *ngIf="price.errors?.required && price.touched" class="text-danger"> Price is required. </span>
+          </div>
+          <div class="col-md-6">
+            <label for="totalOrderPrice" class="form-label">Total Price</label>
+            <input type="number" id="totalOrderPrice" name="totalOrderPrice" formControlName="totalOrderPrice" [ngClass]="{'form-control': true, 'is-invalid': !totalOrderPrice.valid && totalOrderPrice.touched, 'is-valid': totalOrderPrice.valid}" readonly>
+            <span *ngIf="totalOrderPrice.errors?.required && totalOrderPrice.touched" class="text-danger"> Total Price is required. </span>
+          </div>
+          <div class="col-md-12">
+            <button type="submit" (click)="saveOrder()" [disabled]="orderCreateForm.invalid" class="btn btn-success">Submit</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="closeOrderDetails()" style="margin-left: 5px;">Close</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

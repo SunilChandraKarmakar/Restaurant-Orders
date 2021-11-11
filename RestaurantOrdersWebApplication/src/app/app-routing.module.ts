@@ -4,6 +4,7 @@ import { CustomerCreateComponent } from './components/customer-create/customer-c
 import { CustomerEditComponent } from './components/customer-edit/customer-edit.component';
 import { CustomerListComponent } from './components/customer-list/customer-list.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
+import { OrderCreateComponent } from './components/order-create/order-create.component';
 import { OrderListComponent } from './components/order-list/order-list.component';
 import { PaymentgetwatEditComponent } from './components/paymentgetwat-edit/paymentgetwat-edit.component';
 import { PaymentgetwayCreateComponent } from './components/paymentgetway-create/paymentgetway-create.component';
@@ -29,7 +30,7 @@ const routes: Routes = [
   { path: 'product/edit/:id', component : ProductEditComponent },
 
   { path: 'orders', component : OrderListComponent, pathMatch: 'full' },
-  // { path: 'product/create', component : ProductCreateComponent },
+  { path: 'order/create', component : OrderCreateComponent },
   // { path: 'product/edit/:id', component : ProductEditComponent }
 ];
 

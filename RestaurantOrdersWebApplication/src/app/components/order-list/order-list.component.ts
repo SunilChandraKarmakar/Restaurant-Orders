@@ -10,6 +10,7 @@ import { OrderService } from 'src/app/services/order.service';
   templateUrl: './order-list.component.html',
   styleUrls: ['./order-list.component.scss']
 })
+
 export class OrderListComponent implements OnInit {
 
   dtOptions: DataTables.Settings = {};

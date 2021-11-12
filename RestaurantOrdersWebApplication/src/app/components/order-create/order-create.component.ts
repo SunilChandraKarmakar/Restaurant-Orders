@@ -26,7 +26,6 @@ export class OrderCreateComponent implements OnInit {
   customers: CustomerViewModel[] = [];
   products: ProductViewModel[] = [];
   createOrderModel: OrderUpsertModel = new OrderUpsertModel();
-  createOrderDetailsModel: OrderDetailsUpsertModel = new OrderDetailsUpsertModel();
 
   constructor(private _orderService: OrderService, private _orderFormBuilder: FormBuilder, private _orderDetailsFormBuilder: FormBuilder, private _router: Router, private _toastr: ToastrService, private _paymentGetwayService: PaymentgetwayService, private _customerService: CustomerService, private _productService: ProductService) { }
 
@@ -49,7 +48,7 @@ export class OrderCreateComponent implements OnInit {
       totalOrderPrice: new FormControl(null, Validators.required),
     });
 
-    this.getProductPriceBySelectedProduct();
+    this.productPriceCalculation();
   }
 
   get orderNumber() {
@@ -121,7 +120,7 @@ export class OrderCreateComponent implements OnInit {
     console.log('Order Details Model : ', this.orderDetailsCreateForm.value);
   }
 
-  private getProductPriceBySelectedProduct(): void {
+  private productPriceCalculation(): void {
     this.productId.valueChanges.subscribe((res) => {
       let productDetails: ProductViewModel = this.products.find(p => p.id == res)!;
 
@@ -138,7 +137,11 @@ export class OrderCreateComponent implements OnInit {
     });
 
     this.quantity.valueChanges.subscribe((res) => {
-      let productPrice = this.p
+      let totalProductPrice: number = this.price.value * res;
+
+      this.orderDetailsCreateForm.patchValue({
+        totalOrderPrice: totalProductPrice
+      });
     })
   }
 

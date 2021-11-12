@@ -100,7 +100,7 @@
             <span *ngIf="totalOrderPrice.errors?.required && totalOrderPrice.touched" class="text-danger"> Total Price is required. </span>
           </div>
           <div class="col-md-12">
-            <button type="submit" (click)="saveOrder()" [disabled]="orderCreateForm.invalid" class="btn btn-success">Submit</button>
+            <button type="submit" (click)="saveOrderDetails()" [disabled]="orderDetailsCreateForm.invalid" class="btn btn-success">Submit</button>
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="closeOrderDetails()" style="margin-left: 5px;">Close</button>
           </div>
         </form>

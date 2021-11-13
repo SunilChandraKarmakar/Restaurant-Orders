@@ -2,7 +2,7 @@
   <div class="col-md-12">
     <h4 class="text-center">Product Info</h4>
     <hr>
-    <a class="btn btn-primary" routerLink="../product/create">Create Product</a>
+    <a class="btn btn-outline-primary btn-sm" routerLink="../product/create"><i class="fas fa-plus"></i> Create Product</a>
   </div>
 </div>
 <div class="row pt-3">
@@ -20,8 +20,8 @@
             <td>{{ product.name }}</td>
             <td>{{ product.price }}</td>
             <td> 
-              <a (click)="edit(product.id)" class="btn btn-outline-info btn-sm" style="margin-right: 3px;">Edit</a>
-              <a (click)="delete(product.id)" class="btn btn-outline-danger btn-sm">Delete</a>
+              <a (click)="edit(product.id)" class="btn btn-outline-info btn-sm" style="margin-right: 3px;"><i class="far fa-edit"></i> Edit</a>
+              <a (click)="delete(product.id)" class="btn btn-outline-danger btn-sm"><i class="far fa-trash-alt"></i> Delete</a>
             </td>
           </tr>
       </tbody>

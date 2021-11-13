@@ -2,7 +2,7 @@
   <div class="col-md-12">
     <h4 class="text-center">Customers Info</h4>
     <hr>
-    <a class="btn btn-primary" routerLink="../customer/create">Create Customer</a>
+    <a class="btn btn-outline-primary btn-sm" routerLink="../customer/create"><i class="fas fa-plus"></i> Create Customer</a>
   </div>
 </div>
 <div class="row pt-3">
@@ -24,8 +24,8 @@
             <td>{{ customer.email }}</td>
             <td>{{ customer.address }}</td>
             <td> 
-              <a (click)="edit(customer.id)" class="btn btn-outline-info btn-sm" style="margin-right: 3px;">Edit</a>
-              <a (click)="delete(customer.id)" class="btn btn-outline-danger btn-sm">Delete</a>
+              <a (click)="edit(customer.id)" class="btn btn-outline-info btn-sm" style="margin-right: 3px;"><i class="far fa-edit"></i> Edit</a>
+              <a (click)="delete(customer.id)" class="btn btn-outline-danger btn-sm"><i class="far fa-trash-alt"></i> Delete</a>
             </td>
           </tr>
       </tbody>

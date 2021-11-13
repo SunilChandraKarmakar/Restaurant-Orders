@@ -1,4 +1,4 @@
-import { OrderDetailsViewModel } from "../orderdetails/OrderDetailsViewModel";
+import { OrderDetailsUpsertModel } from "../orderdetails/OrderDetailsUpsertModel";
 
 export class OrderUpsertModel {
     id: number;
@@ -6,5 +6,5 @@ export class OrderUpsertModel {
     customerId: number;
     paymentGetwayId: number;
     totalPrice: number;
-    orderDetails: OrderDetailsViewModel[] = [];
+    orderDetails: OrderDetailsUpsertModel[] = [];
 }

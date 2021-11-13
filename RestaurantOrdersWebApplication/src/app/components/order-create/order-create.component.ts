@@ -42,7 +42,9 @@ export class OrderCreateComponent implements OnInit {
     });
 
     this.orderDetailsCreateForm = this._orderDetailsFormBuilder.group({
+      id: new FormControl(),
       productId: new FormControl('', Validators.required),
+      productName: new FormControl(''),
       price: new FormControl(null, Validators.required),
       quantity: new FormControl(null, Validators.required),
       totalOrderPrice: new FormControl(null, Validators.required),
@@ -94,10 +96,6 @@ export class OrderCreateComponent implements OnInit {
     return result;
   }
 
-  saveOrder(): void {
-    console.log('Model : ', this.orderCreateForm.value);
-  }
-
   private getCustomers(): void {
     this._customerService.getCustomers().subscribe((res) => {
       this.customers = res;
@@ -116,8 +114,19 @@ export class OrderCreateComponent implements OnInit {
     });
   }
 
+  saveOrder(): void {
+    console.log('Model : ', this.orderCreateForm.value);
+  }
+
   saveOrderDetails(): void {
-    console.log('Order Details Model : ', this.orderDetailsCreateForm.value);
+    this.increaseOrderDetailsId();
+    this.createOrderModel.orderDetails.push(this.orderDetailsCreateForm.value);
+    this.orderDetailsCreateForm.reset();
+    this.orderDetailsCreateForm.patchValue({
+      productId: ''
+    })
+
+    console.log('order Details : ', this.createOrderModel.orderDetails);
   }
 
   private productPriceCalculation(): void {
@@ -126,6 +135,7 @@ export class OrderCreateComponent implements OnInit {
 
       if(productDetails != undefined) {
         this.orderDetailsCreateForm.patchValue({
+          productName: productDetails.name,
           price: productDetails.price
         })
       }
@@ -147,6 +157,27 @@ export class OrderCreateComponent implements OnInit {
 
   closeOrderDetails(): void {
     this.orderDetailsCreateForm.reset();
+    this.orderDetailsCreateForm.patchValue({
+      productId: ''
+    })
+  }
+
+  updateOrderDetails(id: number): void {
+    
+  }
+
+  private increaseOrderDetailsId(): void {
+    let orderDetailsId: number = this.createOrderModel.orderDetails.length;
+    if(orderDetailsId == 0) {
+      orderDetailsId = 1;
+    }
+    else {
+      orderDetailsId += 1
+    }
+
+    this.orderDetailsCreateForm.patchValue({
+      id: orderDetailsId
+    });
   }
 
 }

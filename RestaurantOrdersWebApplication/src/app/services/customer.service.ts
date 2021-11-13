@@ -25,7 +25,6 @@ export class CustomerService {
 
   getCustomer(id: number): Observable<CustomerViewModel> {
     const getCustomerUrl: string = `${this._baseUrl}/customer/${id}`;
-    console.log('get customer : ', getCustomerUrl);
     return this._httpClient.get<CustomerViewModel>(getCustomerUrl); 
   }
 

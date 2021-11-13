@@ -2,7 +2,7 @@
   <div class="col-md-12">
     <h4 class="text-center">Payment Getway Info</h4>
     <hr>
-    <a class="btn btn-primary" routerLink="../paymentgetway/create">Create Payment Getway</a>
+    <a class="btn btn-outline-primary btn-sm" routerLink="../paymentgetway/create"><i class="fas fa-plus"></i> Create Payment Getway</a>
   </div>
 </div>
 <div class="row pt-3">
@@ -18,8 +18,8 @@
           <tr *ngFor="let paymentGetway of paymentGetways">
             <td>{{ paymentGetway.name }}</td>
             <td> 
-              <a (click)="edit(paymentGetway.id)" class="btn btn-outline-info btn-sm" style="margin-right: 3px;">Edit</a>
-              <a (click)="delete(paymentGetway.id)" class="btn btn-outline-danger btn-sm">Delete</a>
+              <a (click)="edit(paymentGetway.id)" class="btn btn-outline-info btn-sm" style="margin-right: 3px;"><i class="far fa-edit"></i> Edit</a>
+              <a (click)="delete(paymentGetway.id)" class="btn btn-outline-danger btn-sm"><i class="far fa-trash-alt"></i> Delete</a>
             </td>
           </tr>
       </tbody>

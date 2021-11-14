@@ -63,10 +63,10 @@
               <td>{{ orderDetail.quantity }}</td>
               <td>{{ orderDetail.price * orderDetail.quantity }}</td>
               <td>
-                <button type="button" class="btn btn-outline-info btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="updateOrderDetails(orderDetail.productId)">
+                <button type="button" class="btn btn-outline-info btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="updateOrderDetails(orderDetail.id)">
                   <i class="far fa-edit"></i> Edit Item
                 </button>
-                <button class="btn btn-outline-danger btn-sm" style="margin-left: 3px;"><i class="far fa-trash-alt"></i> Delete</button>
+                <button class="btn btn-outline-danger btn-sm" style="margin-left: 3px;" (click)="deleteOrderDetails(orderDetail.id)"><i class="far fa-trash-alt"></i> Delete</button>
             </td>
             </tr>
           </tbody>

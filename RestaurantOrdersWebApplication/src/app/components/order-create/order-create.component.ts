@@ -38,7 +38,7 @@ export class OrderCreateComponent implements OnInit {
       orderNumber: new FormControl(this.generateOrderNumber(), [Validators.required, Validators.minLength(7), Validators.maxLength(7)]),
       customerId: new FormControl('', Validators.required),
       paymentGetwayId: new FormControl('', Validators.required),
-      totalPrice: new FormControl(null, Validators.required)
+      totalPrice: new FormControl('', Validators.required)
     });
 
     this.orderDetailsCreateForm = this._orderDetailsFormBuilder.group({
@@ -119,14 +119,20 @@ export class OrderCreateComponent implements OnInit {
   }
 
   saveOrderDetails(): void {
+    let orderDetailsId: number = this.orderDetailsCreateForm.controls.id.value;
+    console.log('Id: ', orderDetailsId);
+
     this.increaseOrderDetailsId();
     this.createOrderModel.orderDetails.push(this.orderDetailsCreateForm.value);
     this.orderDetailsCreateForm.reset();
+
     this.orderDetailsCreateForm.patchValue({
       productId: ''
     })
 
-    console.log('order Details : ', this.createOrderModel.orderDetails);
+    this.orderCreateForm.patchValue({
+      totalPrice: this.calculateTotalPriceOfOrder()
+    });
   }
 
   private productPriceCalculation(): void {
@@ -163,7 +169,29 @@ export class OrderCreateComponent implements OnInit {
   }
 
   updateOrderDetails(id: number): void {
+    let orderDetailsInfo: OrderDetailsUpsertModel = this.createOrderModel.orderDetails.find(o => o.id == id)!;
     
+    this.orderDetailsCreateForm.patchValue({
+      id: orderDetailsInfo.id,
+      productId: orderDetailsInfo.productId,
+      productName: orderDetailsInfo.productName,
+      price: orderDetailsInfo.price,
+      quantity: orderDetailsInfo.quantity,
+      totalOrderPrice: orderDetailsInfo.totalOrderPrice,
+    })
+  }
+
+  deleteOrderDetails(id: number): void {
+    let orderDetailsInfo: OrderDetailsUpsertModel = this.createOrderModel.orderDetails.find(o => o.id == id)!;
+    let index: number = this.createOrderModel.orderDetails.indexOf(orderDetailsInfo);
+
+    if (index !== -1) {
+      this.createOrderModel.orderDetails.splice(index, 1);
+    }   
+
+    this.orderCreateForm.patchValue({
+      totalPrice: this.calculateTotalPriceOfOrder()
+    });
   }
 
   private increaseOrderDetailsId(): void {
@@ -178,6 +206,16 @@ export class OrderCreateComponent implements OnInit {
     this.orderDetailsCreateForm.patchValue({
       id: orderDetailsId
     });
+  }
+
+  private calculateTotalPriceOfOrder(): number {
+    let totalPrice: number = 0;
+
+    this.createOrderModel.orderDetails.forEach((item: any) => {
+      totalPrice = item.totalOrderPrice + totalPrice;
+    });
+
+    return totalPrice;
   }
 
 }

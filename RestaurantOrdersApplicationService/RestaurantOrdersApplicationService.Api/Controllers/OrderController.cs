@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using RestaurantOrdersApplicationService.Api.ViewModels.Order;
+using RestaurantOrdersApplicationService.Domain;
 using RestaurantOrdersApplicationService.Manager.Contract;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -38,8 +39,21 @@ namespace RestaurantOrdersApplicationService.Api.Controllers
 
         // POST api/<OrderController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<ActionResult<OrderViewModel>> Post([FromBody] OrderUpsertModel order)
         {
+            if (ModelState.IsValid)
+            {
+                Order createOrderInfo = _mapper.Map<Order>(order);
+                var isCreated = createOrderInfo;
+
+                //if (!isCreated)
+                //    return BadRequest(new { ErrorMessage = "Customer can not be created!" });
+
+                //CustomerViewModel createdCustomerInfo = _mapper.Map<CustomerViewModel>(createCustomerInfo);
+                //return Ok(createdCustomerInfo);
+            }
+
+            return BadRequest(new { ErrorMessage = "Customer form can not fulfill properly!" });
         }
 
         // PUT api/<OrderController>/5

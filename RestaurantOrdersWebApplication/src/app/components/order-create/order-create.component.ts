@@ -115,17 +115,35 @@ export class OrderCreateComponent implements OnInit {
   }
 
   saveOrder(): void {
-    console.log('Model : ', this.orderCreateForm.value);
+    this.createOrderModel.orderNumber = this.orderCreateForm.controls.orderNumber.value;
+    this.createOrderModel.paymentGetwayId = this.orderCreateForm.controls.paymentGetwayId.value;
+    this.createOrderModel.customerId = this.orderCreateForm.controls.customerId.value;
+    this.createOrderModel.totalPrice = this.orderCreateForm.controls.totalPrice.value;
+
+    this._orderService.post(this.createOrderModel).subscribe((res) => {
+      console.log('Testing');
+    })
   }
 
   saveOrderDetails(): void {
     let orderDetailsId: number = this.orderDetailsCreateForm.controls.id.value;
-    console.log('Id: ', orderDetailsId);
 
-    this.increaseOrderDetailsId();
-    this.createOrderModel.orderDetails.push(this.orderDetailsCreateForm.value);
+    if(orderDetailsId == null) {
+      this.increaseOrderDetailsId();
+      this.createOrderModel.orderDetails.push(this.orderDetailsCreateForm.value);
+    }
+    else {
+      let index: number = this.createOrderModel.orderDetails.findIndex(x => x.id == orderDetailsId);
+
+      this.createOrderModel.orderDetails[index].id = this.orderDetailsCreateForm.controls.id.value;
+      this.createOrderModel.orderDetails[index].price = this.orderDetailsCreateForm.controls.price.value;
+      this.createOrderModel.orderDetails[index].productId = this.orderDetailsCreateForm.controls.productId.value;
+      this.createOrderModel.orderDetails[index].productName = this.orderDetailsCreateForm.controls.productName.value;
+      this.createOrderModel.orderDetails[index].quantity = this.orderDetailsCreateForm.controls.quantity.value;
+      this.createOrderModel.orderDetails[index].totalOrderPrice = this.orderDetailsCreateForm.controls.totalOrderPrice.value;
+    }
+
     this.orderDetailsCreateForm.reset();
-
     this.orderDetailsCreateForm.patchValue({
       productId: ''
     })

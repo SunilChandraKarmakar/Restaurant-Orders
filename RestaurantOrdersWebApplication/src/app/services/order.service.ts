@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { OrderUpsertModel } from '../models/order/OrderUpsertModel';
 import { OrderViewModel } from '../models/order/OrderViewModel';
 
 @Injectable({
@@ -20,6 +21,11 @@ export class OrderService {
   getOrders(): Observable<OrderViewModel[]> {
     const getOrdersUrl: string = `${this._baseUrl}/order`;
     return this._httpClient.get<OrderViewModel[]>(getOrdersUrl); 
+  }
+
+  post(orderCreateModel: OrderUpsertModel): Observable<OrderViewModel> {  
+    const createOrderUrl: string = `${this._baseUrl}/order`;
+    return this._httpClient.post<OrderViewModel>(createOrderUrl,orderCreateModel, this.httpOptions);
   }
 
 }

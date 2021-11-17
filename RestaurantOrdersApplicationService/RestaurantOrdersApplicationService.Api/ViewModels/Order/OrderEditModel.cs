@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace RestaurantOrdersApplicationService.Api.ViewModels.Order
 {
-    public class OrderUpsertModel
+    public class OrderEditModel
     {
         public int Id { get; set; }
 
@@ -20,6 +20,6 @@ namespace RestaurantOrdersApplicationService.Api.ViewModels.Order
         [Required(ErrorMessage = "Provied Total Price")]
         [DataType(DataType.Currency)]
         public double TotalPrice { get; set; }
-        public ICollection<OrderDetailsUpsertModel> OrderDetails { get; set; }
+        public ICollection<OrderDetailsEditModel> OrderDetails { get; set; }
     }
 }

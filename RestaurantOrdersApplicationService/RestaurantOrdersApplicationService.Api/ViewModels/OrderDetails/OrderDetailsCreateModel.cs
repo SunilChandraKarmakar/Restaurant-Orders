@@ -2,10 +2,8 @@
 
 namespace RestaurantOrdersApplicationService.Api.ViewModels.OrderDetails
 {
-    public class OrderDetailsUpsertModel
+    public class OrderDetailsCreateModel
     {
-        public int Id { get; set; }
-
         [Required(ErrorMessage = "Select Order")]
         public int OrderId { get; set; }
 

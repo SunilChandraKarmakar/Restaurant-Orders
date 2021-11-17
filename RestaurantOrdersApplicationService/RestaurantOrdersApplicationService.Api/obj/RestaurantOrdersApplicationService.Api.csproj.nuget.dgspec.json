@@ -32,6 +32,9 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
+              "D:\\Restaurant-Orders\\RestaurantOrdersApplicationService\\RestaurantOrdersApplicationService.Domain\\RestaurantOrdersApplicationService.Domain.csproj": {
+                "projectPath": "D:\\Restaurant-Orders\\RestaurantOrdersApplicationService\\RestaurantOrdersApplicationService.Domain\\RestaurantOrdersApplicationService.Domain.csproj"
+              },
               "D:\\Restaurant-Orders\\RestaurantOrdersApplicationService\\RestaurantOrdersApplicationService.Manager\\RestaurantOrdersApplicationService.Manager.csproj": {
                 "projectPath": "D:\\Restaurant-Orders\\RestaurantOrdersApplicationService\\RestaurantOrdersApplicationService.Manager\\RestaurantOrdersApplicationService.Manager.csproj"
               }

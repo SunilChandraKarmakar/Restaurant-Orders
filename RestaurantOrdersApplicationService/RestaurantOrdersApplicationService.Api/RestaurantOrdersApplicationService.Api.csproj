@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\RestaurantOrdersApplicationService.Domain\RestaurantOrdersApplicationService.Domain.csproj" />
     <ProjectReference Include="..\RestaurantOrdersApplicationService.Manager\RestaurantOrdersApplicationService.Manager.csproj" />
   </ItemGroup>
 

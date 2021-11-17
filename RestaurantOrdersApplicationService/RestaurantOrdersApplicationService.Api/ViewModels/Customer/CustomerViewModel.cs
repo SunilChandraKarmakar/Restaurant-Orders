@@ -1,4 +1,6 @@
-﻿namespace RestaurantOrdersApplicationService.Api.ViewModels.Customer
+﻿using RestaurantOrdersApplicationService.Api.ViewModels.Order;
+
+namespace RestaurantOrdersApplicationService.Api.ViewModels.Customer
 {
     public class CustomerViewModel
     {
@@ -7,5 +9,7 @@
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
         public string Address { get; set; }
+
+        public ICollection<OrderViewModel> Orders { get; set; }
     }
 }

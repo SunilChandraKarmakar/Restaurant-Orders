@@ -121,7 +121,9 @@ export class OrderCreateComponent implements OnInit {
     this.createOrderModel.totalPrice = this.orderCreateForm.controls.totalPrice.value;
 
     this._orderService.post(this.createOrderModel).subscribe((res) => {
-      console.log('Testing');
+      this._toastr.success('Order Created Successfull', 'Successfull');
+      this.orderCreateForm.reset();
+      return this._router.navigate(['orders']);
     })
   }
 

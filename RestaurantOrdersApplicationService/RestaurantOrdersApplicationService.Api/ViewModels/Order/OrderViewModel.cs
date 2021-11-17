@@ -12,8 +12,8 @@ namespace RestaurantOrdersApplicationService.Api.ViewModels.Order
         public int PaymentGetwayId { get; set; }
         public double TotalPrice { get; set; }
 
-        public virtual CustomerViewModel Customer { get; set; }
-        public virtual PaymentGetwayViewModel PaymentGetway { get; set; }
-        public ICollection<OrderDetailsViewModel> OrderDetails { get; set; }
+        public CustomerViewModel Customer { get; set; }
+        public PaymentGetwayViewModel PaymentGetway { get; set; }
+        public  ICollection<OrderDetailsViewModel> OrderDetails { get; set; }
     }
 }

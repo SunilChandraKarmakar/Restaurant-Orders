@@ -6024,6 +6024,7 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 8.1.1",
+      "RestaurantOrdersApplicationService.Domain >= 1.0.0",
       "RestaurantOrdersApplicationService.Manager >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.1.5"
     ]
@@ -6060,6 +6061,9 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
+            "D:\\Restaurant-Orders\\RestaurantOrdersApplicationService\\RestaurantOrdersApplicationService.Domain\\RestaurantOrdersApplicationService.Domain.csproj": {
+              "projectPath": "D:\\Restaurant-Orders\\RestaurantOrdersApplicationService\\RestaurantOrdersApplicationService.Domain\\RestaurantOrdersApplicationService.Domain.csproj"
+            },
             "D:\\Restaurant-Orders\\RestaurantOrdersApplicationService\\RestaurantOrdersApplicationService.Manager\\RestaurantOrdersApplicationService.Manager.csproj": {
               "projectPath": "D:\\Restaurant-Orders\\RestaurantOrdersApplicationService\\RestaurantOrdersApplicationService.Manager\\RestaurantOrdersApplicationService.Manager.csproj"
             }

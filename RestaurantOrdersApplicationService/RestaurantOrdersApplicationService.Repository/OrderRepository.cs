@@ -14,5 +14,14 @@ namespace RestaurantOrdersApplicationService.Repository
                             .Include(o => o.OrderDetails)
                             .ToListAsync();
         }
+
+        public override async Task<Order> Get(int? id)
+        {
+            return await _db.Orders
+                         .Include(o => o.Customer)
+                         .Include(o => o.PaymentGetway)
+                         .Include(o => o.OrderDetails)
+                         .FirstOrDefaultAsync(o => o.Id == id);
+        }
     }
 }

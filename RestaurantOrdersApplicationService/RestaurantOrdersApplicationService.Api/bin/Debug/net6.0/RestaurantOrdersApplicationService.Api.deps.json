@@ -9,6 +9,7 @@
       "RestaurantOrdersApplicationService.Api/1.0.0": {
         "dependencies": {
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.1.1",
+          "RestaurantOrdersApplicationService.Domain": "1.0.0",
           "RestaurantOrdersApplicationService.Manager": "1.0.0",
           "Swashbuckle.AspNetCore": "6.1.5"
         },

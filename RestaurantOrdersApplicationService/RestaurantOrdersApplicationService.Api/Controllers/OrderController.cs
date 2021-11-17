@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using RestaurantOrdersApplicationService.Api.ViewModels.Order;
+using RestaurantOrdersApplicationService.Api.ViewModels.OrderDetails;
 using RestaurantOrdersApplicationService.Domain;
 using RestaurantOrdersApplicationService.Manager.Contract;
 
@@ -13,11 +14,13 @@ namespace RestaurantOrdersApplicationService.Api.Controllers
     public class OrderController : ControllerBase
     {
         private readonly IOrderManager _orderManager;
+        private readonly IOrderDetailsManager _orderDetailsManager;
         private readonly IMapper _mapper;
 
-        public OrderController(IOrderManager orderManager, IMapper mapper)
+        public OrderController(IOrderManager orderManager, IOrderDetailsManager orderDetailsManager, IMapper mapper)
         {
             _orderManager = orderManager;
+            _orderDetailsManager = orderDetailsManager;
             _mapper = mapper;
         }
 
@@ -39,21 +42,31 @@ namespace RestaurantOrdersApplicationService.Api.Controllers
 
         // POST api/<OrderController>
         [HttpPost]
-        public async Task<ActionResult<OrderViewModel>> Post([FromBody] OrderUpsertModel order)
+        public async Task<ActionResult<OrderViewModel>> Post([FromBody] OrderCreateModel order)
         {
+            bool isCreatedOrderInfo = false;
+            bool isCreatedOrderDetailsInfo = false;                
+
             if (ModelState.IsValid)
             {
                 Order createOrderInfo = _mapper.Map<Order>(order);
-                var isCreated = createOrderInfo;
+                isCreatedOrderInfo = await _orderManager.Create(createOrderInfo);
 
-                //if (!isCreated)
-                //    return BadRequest(new { ErrorMessage = "Customer can not be created!" });
+                foreach (OrderDetailsCreateModel orderDetail in order.OrderDetails)
+                {
+                    OrderDetails createOrderDetailsInfo = _mapper.Map<OrderDetails>(orderDetail);
+                    createOrderDetailsInfo.OrderId = createOrderInfo.Id;
+                    isCreatedOrderDetailsInfo = await _orderDetailsManager.Create(createOrderDetailsInfo);
+                }
 
-                //CustomerViewModel createdCustomerInfo = _mapper.Map<CustomerViewModel>(createCustomerInfo);
-                //return Ok(createdCustomerInfo);
+                if (!isCreatedOrderInfo || !isCreatedOrderDetailsInfo)
+                    return BadRequest(new { ErrorMessage = "Order can not be created!" });
+
+                OrderViewModel createdOrderInfo = _mapper.Map<OrderViewModel>(createOrderInfo);
+                return Ok(createdOrderInfo);
             }
 
-            return BadRequest(new { ErrorMessage = "Customer form can not fulfill properly!" });
+            return BadRequest(new { ErrorMessage = "Order form can not fulfill properly!" });
         }
 
         // PUT api/<OrderController>/5

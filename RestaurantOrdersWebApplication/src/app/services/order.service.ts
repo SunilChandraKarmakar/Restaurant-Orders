@@ -29,4 +29,9 @@ export class OrderService {
     return this._httpClient.post<OrderViewModel>(createOrderUrl,orderCreateModel, this.httpOptions);
   }
 
+  delete(id: number): Observable<OrderViewModel> {
+    const deleteOrderUrl: string = `${this._baseUrl}/order/${id}`;
+    return this._httpClient.delete<OrderViewModel>(deleteOrderUrl, this.httpOptions);
+  }
+
 }

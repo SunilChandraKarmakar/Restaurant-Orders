@@ -14,6 +14,6 @@ namespace RestaurantOrdersApplicationService.Api.ViewModels.Order
 
         public CustomerViewModel Customer { get; set; }
         public PaymentGetwayViewModel PaymentGetway { get; set; }
-        public  ICollection<OrderDetailsViewModel> OrderDetails { get; set; }
+        public  IEnumerable<OrderDetailsViewModel> OrderDetails { get; set; }
     }
 }

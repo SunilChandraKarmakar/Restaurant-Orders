@@ -27,9 +27,12 @@ namespace RestaurantOrdersApplicationService.Api.Configuration.Automapper
             // For Order
             //CreateMap<IEnumerable<Order>, IEnumerable<OrderViewModel>>();
             CreateMap<Order, OrderViewModel>();
-            CreateMap<OrderCreateModel, Order>();                            
+            CreateMap<OrderViewModel, Order>();
+            CreateMap<OrderCreateModel, Order>();
+            CreateMap<Order, OrderCreateModel>();
 
             // For Order Details
+            CreateMap<OrderDetails, OrderDetailsViewModel>();
             CreateMap<OrderDetailsCreateModel, OrderDetails>();
         }
     }

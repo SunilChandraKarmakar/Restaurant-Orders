@@ -76,9 +76,24 @@ namespace RestaurantOrdersApplicationService.Api.Controllers
         }
 
         // DELETE api/<OrderController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("{id:int}")]
+        public async Task<ActionResult<OrderViewModel>> Delete(int? id)
         {
+            if (id == null)
+                return NotFound(new { ErrorMessage = "Order Id can not found!" });
+
+            Order existOrderInfo = await _orderManager.Get(id);
+
+            if (existOrderInfo == null)
+                return NotFound(new { ErrorMessage = "Order can not found!" });
+
+            bool isDeleted = await _orderManager.Delete(existOrderInfo);
+
+            if (!isDeleted)
+                return BadRequest(new { ErrorMessage = "Order can not deleted!" });
+
+            OrderViewModel deletedOrderInfo = _mapper.Map<OrderViewModel>(existOrderInfo);
+            return Ok(deletedOrderInfo);
         }
     }
 }

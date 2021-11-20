@@ -34,10 +34,20 @@ namespace RestaurantOrdersApplicationService.Api.Controllers
         }
 
         // GET api/<OrderController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("{id:int}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<OrderViewModel>> Get(int? id)
         {
-            return "value";
+            if (id == null)
+                return NotFound(new { ErrorMessage = "Order Id can not found! Try again." });
+
+            OrderViewModel orderInfo = _mapper.Map<OrderViewModel>(await _orderManager.Get(id));
+
+            if (orderInfo == null)
+                return NotFound(new { ErrorMessage = "Order can not found! Try again." });
+
+            return Ok(orderInfo);
         }
 
         // POST api/<OrderController>

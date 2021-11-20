@@ -5,6 +5,7 @@ import { CustomerEditComponent } from './components/customer-edit/customer-edit.
 import { CustomerListComponent } from './components/customer-list/customer-list.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { OrderCreateComponent } from './components/order-create/order-create.component';
+import { OrderEditComponent } from './components/order-edit/order-edit.component';
 import { OrderListComponent } from './components/order-list/order-list.component';
 import { PaymentgetwatEditComponent } from './components/paymentgetwat-edit/paymentgetwat-edit.component';
 import { PaymentgetwayCreateComponent } from './components/paymentgetway-create/paymentgetway-create.component';
@@ -31,7 +32,7 @@ const routes: Routes = [
 
   { path: 'orders', component : OrderListComponent, pathMatch: 'full' },
   { path: 'order/create', component : OrderCreateComponent },
-  // { path: 'product/edit/:id', component : ProductEditComponent }
+  { path: 'order/edit/:id', component : OrderEditComponent }
 ];
 
 @NgModule({

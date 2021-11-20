@@ -1,4 +1,5 @@
-﻿using RestaurantOrdersApplicationService.Api.ViewModels.OrderDetails;
+﻿using RestaurantOrdersApplicationService.Api.ViewModels.Customer;
+using RestaurantOrdersApplicationService.Api.ViewModels.OrderDetails;
 using System.ComponentModel.DataAnnotations;
 
 namespace RestaurantOrdersApplicationService.Api.ViewModels.Order

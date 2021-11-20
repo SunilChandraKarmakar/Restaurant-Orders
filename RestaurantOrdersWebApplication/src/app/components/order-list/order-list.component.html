@@ -24,7 +24,7 @@
             <td>{{ order.paymentGetway.name }}</td>
             <td>{{ order.totalPrice }}</td>
             <td> 
-              <a class="btn btn-outline-info btn-sm" style="margin-right: 3px;"><i class="far fa-edit"></i> Edit</a>
+              <a class="btn btn-outline-info btn-sm" routerLink="../order/edit/{{order.id}}" style="margin-right: 3px;"><i class="far fa-edit"></i> Edit</a>
               <a class="btn btn-outline-danger btn-sm" (click)="delete(order.id)"><i class="far fa-trash-alt"></i> Delete</a>
             </td>
           </tr>

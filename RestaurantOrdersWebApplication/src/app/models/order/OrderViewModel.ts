@@ -11,5 +11,5 @@ export class OrderViewModel {
 
     customer: CustomerViewModel;
     paymentGetway: PaymentGetwayViewModel;
-    //orderDetails: OrderDetailsViewModel[];
+    orderDetails: OrderDetailsViewModel[];
 }

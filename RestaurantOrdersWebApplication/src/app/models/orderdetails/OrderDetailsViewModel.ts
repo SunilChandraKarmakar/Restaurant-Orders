@@ -6,6 +6,8 @@ export class OrderDetailsViewModel {
     orderId: number;
     productId: number;
     quantity: number;
+    productName: string;
+    price: number;
 
     order: OrderViewModel;
     product: ProductViewModel;

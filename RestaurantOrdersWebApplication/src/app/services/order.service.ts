@@ -24,6 +24,11 @@ export class OrderService {
     return orders;
   }
 
+  getOrder(id: number): Observable<OrderUpsertModel> {
+    const getOrderUrl: string = `${this._baseUrl}/order/${id}`;
+    return this._httpClient.get<OrderUpsertModel>(getOrderUrl); 
+  }
+
   post(orderCreateModel: OrderUpsertModel): Observable<OrderViewModel> {  
     const createOrderUrl: string = `${this._baseUrl}/order`;
     return this._httpClient.post<OrderViewModel>(createOrderUrl,orderCreateModel, this.httpOptions);

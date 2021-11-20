@@ -1,3 +1,77 @@
-<p>
-  order-edit works!
-</p>
+<div class="row pt-2">
+  <div class="col-md-12">
+    <h4 class="text-center">Update Order</h4>
+    <hr>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-body">
+        <form method="post" [formGroup]="orderEditForm" class="row g-3" autocomplete="off">
+          <div class="col-md-6">
+            <label for="orderNumber" class="form-label">Order Number</label>
+            <input type="text" id="orderNumber" name="orderNumber" formControlName="orderNumber" [ngClass]="{'form-control': true, 'is-invalid': !orderNumber.valid && orderNumber.touched, 'is-valid': orderNumber.valid}" readonly>
+            <span *ngIf="orderNumber.errors?.required && orderNumber.touched" class="text-danger"> Order Number is required. </span>
+            <span *ngIf="orderNumber.hasError('minlength') && orderNumber.touched" class="text-danger"> Minumam 7 character. </span>
+            <span *ngIf="orderNumber.hasError('maxlength') && orderNumber.touched" class="text-danger"> Maxumam 7 character. </span>
+          </div>
+          <div class="col-md-6">
+            <label for="paymentGetwayId" class="form-label">Payment Mehtod</label>
+            <select id="paymentGetwayId" name="paymentGetwayId" formControlName="paymentGetwayId" [ngClass]="{'form-control': true, 'is-invalid': (paymentGetwayId.touched || paymentGetwayId.dirty) && !paymentGetwayId.valid, 'is-valid': paymentGetwayId.valid}">
+              <option value="">-- Select One --</option>
+              <option *ngFor="let paymentGetway of paymentGetways" [value]="paymentGetway.id">{{paymentGetway.name}}</option>
+            </select>
+            <span *ngIf="paymentGetwayId.errors?.required && paymentGetwayId.touched" class="text-danger"> Payment Getway is required. </span>
+          </div>
+          <div class="col-md-6">
+            <label for="customerId" class="form-label">Customer</label>
+            <select id="customerId" name="customerId" formControlName="customerId" [ngClass]="{'form-control': true, 'is-invalid': (customerId.touched || customerId.dirty) && !customerId.valid, 'is-valid': customerId.valid}">
+              <option value="">-- Select One --</option>
+              <option *ngFor="let customer of customers" [value]="customer.id">{{customer.name}}</option>
+            </select>
+            <span *ngIf="customerId.errors?.required && customerId.touched" class="text-danger"> Customer is required. </span>
+          </div>
+          <div class="col-md-6">
+            <label for="totalPrice" class="form-label">Total Price</label>
+            <input type="number" id="totalPrice" name="totalPrice" formControlName="totalPrice" [ngClass]="{'form-control': true, 'is-invalid': !totalPrice.valid && totalPrice.touched, 'is-valid': totalPrice.valid}" readonly>
+            <span *ngIf="totalPrice.errors?.required && totalPrice.touched" class="text-danger"> Total Price is required. </span>
+          </div>
+          <div class="col-md-12">
+            <button type="submit" [disabled]="orderEditForm.invalid" class="btn btn-outline-success btn-sm"><i class="far fa-save"></i> Submit</button>
+            <a class="btn btn-outline-primary btn-sm" routerLink="../../../orders" style="margin-left: 5px;"><i class="fas fa-list"></i> Back To List</a>
+          </div>
+        </form>
+        <table class="table mt-4">
+          <thead>
+            <tr>
+              <th scope="col">Food</th>
+              <th scope="col">Price</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Total</th>
+              <th scope="col">
+                <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  <i class="fas fa-plus"></i> Add Item
+                </button>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let orderDetail of orderDetails">
+              <td>{{ orderDetail.productName }}</td>
+              <td>{{ orderDetail.price }}</td>
+              <td>{{ orderDetail.quantity }}</td>
+              <td>{{ orderDetail.price * orderDetail.quantity }}</td>
+              <td>
+                <button type="button" class="btn btn-outline-info btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+                  <i class="far fa-edit"></i> Edit Item
+                </button>
+                <button class="btn btn-outline-danger btn-sm" style="margin-left: 3px;"><i class="far fa-trash-alt"></i> Delete</button>
+            </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

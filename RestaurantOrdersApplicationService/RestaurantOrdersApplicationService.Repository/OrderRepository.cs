@@ -12,6 +12,7 @@ namespace RestaurantOrdersApplicationService.Repository
                             .Include(o => o.Customer)
                             .Include(o => o.PaymentGetway)
                             .Include(o => o.OrderDetails)
+                                .ThenInclude(od => od.Product)
                             .ToListAsync();
         }
 

@@ -55,8 +55,7 @@ export class OrderEditComponent implements OnInit {
 
     this._orderService.getOrder(this._orderId).subscribe((res) => {
       this.orderEditForm.patchValue(res);
-      //this.orderDetails = res.orderDetails;
-      console.log('Order Details : ', this.orderDetails);
+      this.orderDetails = res.orderDetails;
     });
 
     this.productPriceCalculation();
@@ -136,6 +135,45 @@ export class OrderEditComponent implements OnInit {
         totalOrderPrice: totalProductPrice
       });
     })
+  }
+
+  updateOrderDetails(id: number): void {
+    let orderDetailsInfo: OrderDetailsViewModel = this.orderDetails.find(o => o.id == id)!;
+
+    this.orderDetailsEditForm.patchValue({
+      id: orderDetailsInfo.id,
+      productId: orderDetailsInfo.productId,
+      price: orderDetailsInfo.product.price,
+      quantity: orderDetailsInfo.quantity,
+      totalOrderPrice: orderDetailsInfo.product.price * orderDetailsInfo.quantity,
+    });
+  }
+
+  deleteOrderDetails(id: number): void {
+    let orderDetailsInfo: OrderDetailsViewModel = this.orderDetails.find(o => o.id == id)!;
+    let index: number = this.orderDetails.indexOf(orderDetailsInfo);
+
+    if (index !== -1) {
+      this.orderDetails.splice(index, 1);
+    }   
+
+    this.orderEditForm.patchValue({
+      totalPrice: this.calculateTotalPriceOfOrder()
+    });
+  }
+
+  private calculateTotalPriceOfOrder(): number {
+    let totalPrice: number = 0;
+
+    this.orderDetails.forEach((item: any) => {
+      totalPrice = item.totalOrderPrice + totalPrice;
+    });
+
+    return totalPrice;
+  }
+
+  closeOrderDetails(): void {
+    this.orderDetailsEditForm.reset();
   }
 
 }

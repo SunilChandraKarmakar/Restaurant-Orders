@@ -12,5 +12,15 @@ namespace RestaurantOrdersApplicationService.Manager
         {
             _orderDetailsRepository = orderDetailsRepository;
         }
+
+        public override async Task<IEnumerable<OrderDetails>> Get()
+        {
+            return await _orderDetailsRepository.Get();
+        }
+
+        public override async Task<OrderDetails> Get(int? id)
+        {
+            return await _orderDetailsRepository.Get(id);
+        }
     }
 }

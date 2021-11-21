@@ -8,6 +8,6 @@ namespace RestaurantOrdersApplicationService.Api.ViewModels.Product
         public string Name { get; set; }
         public double Price { get; set; }
 
-        public ICollection<OrderDetailsViewModel> OrderDetails { get; set; }
+        public IEnumerable<OrderDetailsViewModel> OrderDetails { get; set; }
     }
 }

@@ -53,23 +53,13 @@ namespace RestaurantOrdersApplicationService.Api.Controllers
         // POST api/<OrderController>
         [HttpPost]
         public async Task<ActionResult<OrderViewModel>> Post([FromBody] OrderCreateModel order)
-        {
-            bool isCreatedOrderInfo = false;
-            bool isCreatedOrderDetailsInfo = false;                
-
+        {           
             if (ModelState.IsValid)
             {
                 Order createOrderInfo = _mapper.Map<Order>(order);
-                isCreatedOrderInfo = await _orderManager.Create(createOrderInfo);
+                bool isCreatedOrderInfo = await _orderManager.Create(createOrderInfo);
 
-                foreach (OrderDetailsCreateModel orderDetail in order.OrderDetails)
-                {
-                    OrderDetails createOrderDetailsInfo = _mapper.Map<OrderDetails>(orderDetail);
-                    createOrderDetailsInfo.OrderId = createOrderInfo.Id;
-                    isCreatedOrderDetailsInfo = await _orderDetailsManager.Create(createOrderDetailsInfo);
-                }
-
-                if (!isCreatedOrderInfo || !isCreatedOrderDetailsInfo)
+                if (!isCreatedOrderInfo)
                     return BadRequest(new { ErrorMessage = "Order can not be created!" });
 
                 OrderViewModel createdOrderInfo = _mapper.Map<OrderViewModel>(createOrderInfo);

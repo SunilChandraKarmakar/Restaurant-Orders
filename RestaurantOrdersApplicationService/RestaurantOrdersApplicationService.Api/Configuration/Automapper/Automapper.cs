@@ -27,14 +27,14 @@ namespace RestaurantOrdersApplicationService.Api.Configuration.Automapper
             // For Order
             CreateMap<Order, OrderViewModel>();
             CreateMap<OrderViewModel, Order>();
-            CreateMap<OrderCreateModel, Order>();
             CreateMap<Order, OrderCreateModel>();
-            CreateMap<Order, OrderEditModel>();
+            CreateMap<OrderCreateModel, Order>();
 
             // For Order Details
             CreateMap<OrderDetails, OrderDetailsViewModel>();
+            CreateMap<OrderDetailsViewModel, OrderDetails>();
+            CreateMap<OrderDetails, OrderDetailsCreateModel>();
             CreateMap<OrderDetailsCreateModel, OrderDetails>();
-            CreateMap<OrderDetails, OrderDetailsEditModel>();
         }
     }
 }

@@ -10,6 +10,6 @@ namespace RestaurantOrdersApplicationService.Domain
         [StringLength(30, MinimumLength = 2)]
         public string Name { get; set;}
 
-        public virtual ICollection<Order> Orders { get; set; }
+        public virtual IEnumerable<Order> Orders { get; set; }
     }
 }

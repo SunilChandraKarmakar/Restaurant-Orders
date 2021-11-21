@@ -8,6 +8,7 @@ export class OrderDetailsViewModel {
     quantity: number;
     productName: string;
     price: number;
+    totalOrderPrice: number;
 
     order: OrderViewModel;
     product: ProductViewModel;

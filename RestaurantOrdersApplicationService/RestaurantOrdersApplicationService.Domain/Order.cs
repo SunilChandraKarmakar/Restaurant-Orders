@@ -22,6 +22,6 @@ namespace RestaurantOrdersApplicationService.Domain
 
         public virtual Customer Customer { get; set; }
         public virtual PaymentGetway PaymentGetway { get; set; }   
-        public virtual ICollection<OrderDetails> OrderDetails  { get; set; }
+        public virtual IEnumerable<OrderDetails> OrderDetails  { get; set; }
     }
 }

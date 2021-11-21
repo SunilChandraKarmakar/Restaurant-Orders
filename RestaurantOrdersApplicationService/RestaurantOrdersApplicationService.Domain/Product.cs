@@ -14,6 +14,6 @@ namespace RestaurantOrdersApplicationService.Domain
         [DataType(DataType.Currency)]
         public double Price { get; set; }
 
-        public virtual ICollection<OrderDetails> OrderDetails { get; set; }
+        public virtual IEnumerable<OrderDetails> OrderDetails { get; set; }
     }
 }

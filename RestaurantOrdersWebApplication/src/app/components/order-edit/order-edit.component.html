@@ -45,6 +45,7 @@
         <table class="table mt-4">
           <thead>
             <tr>
+              <th scope="col">Id</th>
               <th scope="col">Food</th>
               <th scope="col">Price</th>
               <th scope="col">Quantity</th>
@@ -54,12 +55,13 @@
           </thead>
           <tbody>
             <tr *ngFor="let orderDetail of orderEditModel.orderDetails">
+              <td>{{ orderDetail.id }}</td>
               <td>{{ orderDetail.product.name }}</td>
               <td>{{ orderDetail.product.price }}</td>
               <td>{{ orderDetail.quantity }}</td>
               <td>{{ orderDetail.product.price * orderDetail.quantity }}</td>
               <td>
-                <button type="button" class="btn btn-outline-info btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+                <button type="button" class="btn btn-outline-info btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="updateOrderDetails(orderDetail.id)">
                   <i class="far fa-edit"></i> Edit Item
                 </button>
                 <button class="btn btn-outline-danger btn-sm" style="margin-left: 3px;" (click)="deleteOrderDetails(orderDetail.id)"><i class="far fa-trash-alt"></i> Delete</button>
@@ -105,7 +107,7 @@
             <span *ngIf="totalOrderPrice.errors?.required && totalOrderPrice.touched" class="text-danger"> Total Price is required. </span>
           </div>
           <div class="col-md-12">
-            <button type="submit" (click)="updateOrderDetails()"  [disabled]="orderDetailsEditForm.invalid"  class="btn btn-outline-success btn-sm"><i class="far fa-save"></i> Update</button>
+            <button type="submit" (click)="saveOrderDetails()"  [disabled]="orderDetailsEditForm.invalid"  class="btn btn-outline-success btn-sm"><i class="far fa-save"></i> Update</button>
             <button type="button" class="btn btn-outline-primary btn-sm" data-bs-dismiss="modal" style="margin-left: 5px;" (click)="closeOrderDetails()"><i class="fas fa-list"></i> Close</button>
           </div>
         </form>

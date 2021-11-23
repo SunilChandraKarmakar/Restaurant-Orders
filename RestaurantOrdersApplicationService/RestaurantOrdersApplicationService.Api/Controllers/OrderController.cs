@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using RestaurantOrdersApplicationService.Api.ViewModels.Order;
-using RestaurantOrdersApplicationService.Api.ViewModels.OrderDetails;
 using RestaurantOrdersApplicationService.Domain;
 using RestaurantOrdersApplicationService.Manager.Contract;
 
@@ -14,13 +13,11 @@ namespace RestaurantOrdersApplicationService.Api.Controllers
     public class OrderController : ControllerBase
     {
         private readonly IOrderManager _orderManager;
-        private readonly IOrderDetailsManager _orderDetailsManager;
         private readonly IMapper _mapper;
 
-        public OrderController(IOrderManager orderManager, IOrderDetailsManager orderDetailsManager, IMapper mapper)
+        public OrderController(IOrderManager orderManager, IMapper mapper)
         {
             _orderManager = orderManager;
-            _orderDetailsManager = orderDetailsManager;
             _mapper = mapper;
         }
 

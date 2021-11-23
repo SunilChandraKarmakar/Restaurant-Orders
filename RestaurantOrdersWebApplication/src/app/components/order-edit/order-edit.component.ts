@@ -8,8 +8,10 @@ import { PaymentGetwayViewModel } from 'src/app/models/paymentgetway/PaymentGetw
 import { ProductViewModel } from 'src/app/models/product/ProductViewModel';
 import { CustomerService } from 'src/app/services/customer.service';
 import { OrderService } from 'src/app/services/order.service';
+import { OrderdetailsService } from 'src/app/services/orderdetails.service';
 import { PaymentgetwayService } from 'src/app/services/paymentgetway.service';
 import { ProductService } from 'src/app/services/product.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-order-edit',
@@ -29,7 +31,7 @@ export class OrderEditComponent implements OnInit {
 
   orderEditModel: OrderViewModel = new OrderViewModel();
 
-  constructor(private _orderService: OrderService, private _orderFormBuilder: FormBuilder, private _paymentGetwayService: PaymentgetwayService, private _orderDetailsFormBuilder: FormBuilder, private _customerService: CustomerService, private _productService: ProductService, private _activatedRoute: ActivatedRoute) { }
+  constructor(private _orderService: OrderService, private _orderDetailsService: OrderdetailsService, private _orderFormBuilder: FormBuilder, private _paymentGetwayService: PaymentgetwayService, private _orderDetailsFormBuilder: FormBuilder, private _customerService: CustomerService, private _productService: ProductService, private _activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this._activatedRoute.params.subscribe((params) => {
@@ -41,6 +43,7 @@ export class OrderEditComponent implements OnInit {
     this.getProducts();
 
     this.orderEditForm = this._orderFormBuilder.group({
+      id: new FormControl(),
       orderNumber: new FormControl([Validators.required, Validators.minLength(7), Validators.maxLength(7)]),
       customerId: new FormControl('', Validators.required),
       paymentGetwayId: new FormControl('', Validators.required),
@@ -48,7 +51,10 @@ export class OrderEditComponent implements OnInit {
     });
 
     this.orderDetailsEditForm = this._orderDetailsFormBuilder.group({
+      id: new FormControl(),
+      orderId: new FormControl(),
       productId: new FormControl('', Validators.required),
+      productName: new FormControl(),
       price: new FormControl(null, Validators.required),
       quantity: new FormControl(null, Validators.required),
       totalOrderPrice: new FormControl(null, Validators.required),
@@ -113,16 +119,27 @@ export class OrderEditComponent implements OnInit {
   }
 
   deleteOrderDetails(id: number): void {
-    let orderDetailsInfo: OrderDetailsViewModel = this.orderEditModel.orderDetails.find(od => od.id == id)!;
-    let index: number = this.orderEditModel.orderDetails.indexOf(orderDetailsInfo);
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6 ',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        );
 
-    if (index !== -1) {
-      this.orderEditModel.orderDetails.splice(index, 1);
-    }   
-
-    this.orderEditForm.patchValue({
-      totalPrice: this.calculateTotalPriceOfOrder()
-    });
+        this._orderDetailsService.delete(id).subscribe((res) => {
+          this.ngOnInit();
+        });
+      }
+    })
   }
 
   private calculateTotalPriceOfOrder(): number {
@@ -159,9 +176,36 @@ export class OrderEditComponent implements OnInit {
       });
     })
   }
+
+  updateOrderDetails(id: number): void {
+    let selectedOrderDetails: OrderDetailsViewModel = this.orderEditModel.orderDetails.find(od => od.id == id)!;
+
+    this.orderDetailsEditForm.patchValue({
+      id: selectedOrderDetails.id,
+      orderId: selectedOrderDetails.orderId,
+      productId: selectedOrderDetails.productId,
+      productName: selectedOrderDetails.product.name,
+      price: selectedOrderDetails.product.price,
+      quantity: selectedOrderDetails.quantity,
+      totalOrderPrice:  selectedOrderDetails.product.price * selectedOrderDetails.quantity
+    });
+  }
   
-  updateOrderDetails(): void {
-    
+  saveOrderDetails(): void {
+    let orderDetailsId: number = this.orderDetailsEditForm.controls.id.value;
+    let index: number = this.orderEditModel.orderDetails.findIndex(x => x.id == orderDetailsId);
+
+    this.orderEditModel.orderDetails[index].orderId = this.orderDetailsEditForm.controls.orderId.value;
+    this.orderEditModel.orderDetails[index].product.id = this.orderDetailsEditForm.controls.productId.value;
+    this.orderEditModel.orderDetails[index].product.price = this.orderDetailsEditForm.controls.price.value;
+    this.orderEditModel.orderDetails[index].product.name = this.orderDetailsEditForm.controls.productName.value;
+    this.orderEditModel.orderDetails[index].quantity = this.orderDetailsEditForm.controls.quantity.value;
+
+    this.orderEditForm.patchValue({
+      totalPrice: this.calculateTotalPriceOfOrder()
+    });
+
+    this.closeOrderDetails();
   }
 
   closeOrderDetails(): void {
